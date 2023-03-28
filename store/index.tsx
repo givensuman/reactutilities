@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState } from "react"
 import produce, { type Draft } from "immer"
 
-type Value<T = unknown> = Record<string, T[keyof T]>
+type Value<T = unknown> = Record<string, T extends object ? T[keyof T] : unknown>
 
 export type Store<T = Value> = {
     [K in keyof T]: readonly [
@@ -10,23 +10,23 @@ export type Store<T = Value> = {
     ]
 }
 
-type ProviderProps<T = unknown> = React.ProviderProps<Value<T>>
+type ProviderProps = React.ProviderProps<Value>
 
-const Context = createContext<any>(null)
+const Context = createContext<Store | null>(null)
 
-export const Store = <T,>({
+export const Store = ({
     value,
     children,
     ...other
-}: ProviderProps<T>) => {
+}: ProviderProps) => {
 
-    const store = produce(value, draft => {
+    const store = produce(value, (draft: Draft<Store>) => {
         for (const key in draft) {
             if (Object.prototype.hasOwnProperty.call(draft, key)) {
-                draft[key] = useState(value[key]) as Draft<T[keyof T]>
+                draft[key] = useState(value[key])
             }
         }
-    }) as Store<T>
+    }) as Store
 
     return (
         <Context.Provider value={store} {...other}>
@@ -35,12 +35,14 @@ export const Store = <T,>({
     )
 }
 
-export const useStore = <T,>() => {
-    const ctx = useContext(Context) as Store<T> | null
+export const useStore = <T extends Value,>() => {
+    const ctx = useContext(Context)
 
     if (!ctx) {
         throw new Error("No context found for useStore. Are you sure you're calling useStore in a descendent of the <Store> provider?")
     }
 
-    return ctx
+    return ctx as Store<T>
 }
+
+export default useStore

@@ -3,7 +3,14 @@ import produce, { type Draft } from "immer"
 
 type Value<T = unknown> = Record<string, T extends object ? T[keyof T] : unknown>
 
-export type Store<T = Value> = {
+/**
+ * Type used to transform object into stateful store.
+ * 
+ * Replaces each key with the type of the return of a `useState` call.
+ * 
+ * For more information, go [here](https://github.com/givensuman/reactutilities).
+ */
+export type StoreType<T = Value> = {
     [K in keyof T]: readonly [
         T[K], 
         React.Dispatch<React.SetStateAction<T[K]>>
@@ -12,21 +19,30 @@ export type Store<T = Value> = {
 
 type ProviderProps = React.ProviderProps<Value>
 
-const Context = createContext<Store | null>(null)
+const Context = createContext<StoreType | null>(null)
 
+/**
+ * The context provider component for the \@reactutilities/store package.
+ * 
+ * Creates a global state store and makes it available to all descendent components through the `useStore` hook.
+ * 
+ * @param value - A simple object that should reflect the initial state of your store.
+ * 
+ * For more information, go [here](https://github.com/givensuman/reactutilities).
+ */
 export const Store = ({
     value,
     children,
     ...other
 }: ProviderProps) => {
 
-    const store = produce(value, (draft: Draft<Store>) => {
+    const store = produce(value, (draft: Draft<StoreType>) => {
         for (const key in draft) {
             if (Object.prototype.hasOwnProperty.call(draft, key)) {
                 draft[key] = useState(value[key])
             }
         }
-    }) as Store
+    }) as StoreType
 
     return (
         <Context.Provider value={store} {...other}>
@@ -35,6 +51,15 @@ export const Store = ({
     )
 }
 
+/**
+ * The context consumer hook for the \@reactutilities/store package.
+ * 
+ * Provides access to the global state from any descendent component of the `Store` provider.
+ * 
+ * @returns A transformation of the store passed through the `value` prop of the `Store` provider, where each key maps to a `useState` instance, and can be accessed or updated through the conventional `[state, setState]` API.
+ * 
+ * For more information, go [here](https://github.com/givensuman/reactutilities).
+ */
 export const useStore = <T extends Value,>() => {
     const ctx = useContext(Context)
 
@@ -42,7 +67,7 @@ export const useStore = <T extends Value,>() => {
         throw new Error("No context found for useStore. Are you sure you're calling useStore in a descendent of the <Store> provider?")
     }
 
-    return ctx as Store<T>
+    return ctx as StoreType<T>
 }
 
 export default useStore

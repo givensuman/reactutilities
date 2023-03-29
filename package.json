@@ -1,0 +1,25 @@
+{
+  "name": "reactutilities",
+  "author": "Given Suman",
+  "license": "MIT",
+  "scripts": {
+    "lint": "npx eslint src test",
+    "lint:fix": "npm run lint -- --fix",
+    "prettier": "npx prettier src test --check",
+    "prettier:fix": "npm run prettier -- --write",
+    "install:store": "(cd ./store && pnpm install);",
+    "test:store": "(cd ./store && pnpm test);",
+    "install:hooks": "(cd ./hooks && pnpm install);",
+    "test:hooks": "(cd ./hooks && pnpm test);"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.31",
+    "@typescript-eslint/eslint-plugin": "^5.57.0",
+    "@typescript-eslint/parser": "^5.57.0",
+    "eslint": "^8.37.0",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-tree-shaking": "^1.10.0",
+    "prettier": "^2.8.7",
+    "typescript": "^5.0.2"
+  }
+}

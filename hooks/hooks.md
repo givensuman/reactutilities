@@ -1,10 +1,4 @@
-    useLocalStorage: This hook allows you to save and retrieve data from the browser's localStorage.
-
-    useSessionStorage: Similar to useLocalStorage, this hook allows you to save and retrieve data from the browser's sessionStorage.
-
-    useToggle: This hook toggles between two states (true/false, on/off, etc.) each time it's called.
-
-    useDebounce: This hook delays the execution of a function until a certain amount of time has passed, useful for input fields or search bars.
+useDebounce: This hook delays the execution of a function until a certain amount of time has passed, useful for input fields or search bars.
 
     useThrottle: Similar to useDebounce, but instead of delaying the execution of a function, it limits the number of times a function can be called in a given period of time.
 
@@ -23,8 +17,6 @@
     useFetch: Similar to useAsync, this hook simplifies the process of handling data fetching, but also allows you to easily cancel the request if needed.
 
     useAnimation: This hook allows you to control CSS animations and transitions through JavaScript.
-
-    usePrevious: This hook allows you to access the previous value of a variable or state, useful for tracking changes.
 
     useHover: This hook allows you to detect when an element is being hovered over by the user.
 

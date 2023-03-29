@@ -1,34 +1,41 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import For from '.';
 
 describe('For component', () => {
-  it('should render each item in the array', () => {
-    const items = ['apple', 'banana', 'cherry'];
-    const { getByText } = render(
-      <For each={items}>
-        {(item, index) => <div key={index}>{item}</div>}
-      </For>
-    );
-    expect(getByText('apple')).toBeInTheDocument;
-    expect(getByText('banana')).toBeInTheDocument;
-    expect(getByText('cherry')).toBeInTheDocument;
+  it('renders children for each item in the array', () => {
+    const data = ['apple', 'banana', 'cherry'];
+    render(<For each={data}>{(item) => <div key={item}>{item}</div>}</For>);
+    expect(screen.getByText('apple')).toBeInTheDocument();
+    expect(screen.getByText('banana')).toBeInTheDocument();
+    expect(screen.getByText('cherry')).toBeInTheDocument();
   });
 
-  it('should pass the correct item and index to the children function', () => {
-    const items = ['apple', 'banana', 'cherry'];
-    const childrenFn = jest.fn();
+  it('renders fallback if the array is empty', () => {
+    const data: string[] = [];
     render(
-      <For each={items}>
-        {childrenFn}
+      <For each={data} fallback={<div>no items</div>}>
+        {(item) => <div key={item}>{item}</div>}
       </For>
     );
-    expect(childrenFn).toHaveBeenCalledTimes(3);
-    expect(childrenFn.mock.calls[0][0]).toBe('apple');
-    expect(childrenFn.mock.calls[0][1]).toBe(0);
-    expect(childrenFn.mock.calls[1][0]).toBe('banana');
-    expect(childrenFn.mock.calls[1][1]).toBe(1);
-    expect(childrenFn.mock.calls[2][0]).toBe('cherry');
-    expect(childrenFn.mock.calls[2][1]).toBe(2);
+    expect(screen.getByText('no items')).toBeInTheDocument();
+  });
+
+  it('returns an array of children for each item in the array', () => {
+    const data = ['apple', 'banana', 'cherry'];
+    const children = (item: string) => <div key={item}>{item}</div>;
+    const result = render(<For each={data}>{children}</For>);
+    const renderedChildren = data.map((item) => result.getByText(item));
+    expect(renderedChildren.length).toBe(3);
+  });
+
+  it('passes the index as the second argument to the children function', () => {
+    const data = ['apple', 'banana', 'cherry'];
+    const children = jest.fn((item, index) => <div key={item}>{index}</div>);
+    render(<For each={data}>{children}</For>);
+    expect(children).toHaveBeenCalledTimes(3);
+    expect(children).toHaveBeenCalledWith('apple', 0);
+    expect(children).toHaveBeenCalledWith('banana', 1);
+    expect(children).toHaveBeenCalledWith('cherry', 2);
   });
 });

@@ -2,15 +2,13 @@
 
 `reactutilities` is a package library of reusable components, hooks, and utilities for React applications. It's written tip-to-toe in TypeScript, and each package is thoroughly tested.
 
-Check out the [docs]() to get started.
-
 ## Packages
 
 | Package | Description |
 | --- | --- |
 | `@reactutilities/store` | An efficient and intuitive way to manage state in your React applications |
 | `@reactutilities/hooks` | A collection of React hooks for common and not-so-common use cases alike |
-| `@reactutilities/control` | Components for streamlining control flow and logic in your React component's JSX |
+| `@reactutilities/controls` | Components for streamlining control flow and logic in your React component's JSX |
 
 ## Contributing
 

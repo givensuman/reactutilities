@@ -2,6 +2,8 @@
 
 `reactutilities` is a package library of reusable components, hooks, and utilities for React applications. It's written tip-to-toe in TypeScript, and each package is thoroughly tested.
 
+This is a monorepo for the packages developed as part of the `@reactutilities` NPM organization. For details on any of the various APIs or library details, check out the package's README in its corresponding directory.
+
 ## Packages
 
 | Package | Description |

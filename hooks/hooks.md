@@ -2,14 +2,6 @@ useDebounce: This hook delays the execution of a function until a certain amount
 
     useThrottle: Similar to useDebounce, but instead of delaying the execution of a function, it limits the number of times a function can be called in a given period of time.
 
-    useKeyPress: This hook allows you to detect when a specific key on the keyboard is pressed.
-
-    useOnClickOutside: This hook allows you to detect when a user clicks outside of a specific element, such as a dropdown menu or modal.
-
-    useInterval: This hook allows you to execute a function at a specific interval, useful for things like timers or real-time data updates.
-
-    useAsync: This hook simplifies the process of handling asynchronous data fetching and updating the UI when the data is ready.
-
     useMediaQuery: This hook allows you to detect the screen size and apply different styles or logic accordingly.
 
     useWindowSize: This hook allows you to detect the size of the window and apply different styles or logic accordingly.
@@ -18,13 +10,10 @@ useDebounce: This hook delays the execution of a function until a certain amount
 
     useAnimation: This hook allows you to control CSS animations and transitions through JavaScript.
 
-    useHover: This hook allows you to detect when an element is being hovered over by the user.
-
     useFocus: This hook allows you to detect when an element is in focus, such as an input field.
 
     useScroll: This hook allows you to detect when the user has scrolled to a certain point on the page.
 
-    useClipboard: This hook allows you to copy text or other data to the clipboard.
 
     useDarkMode: This hook allows you to toggle between light and dark mode, and save the user's preference to local storage.
 

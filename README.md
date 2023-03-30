@@ -1,4 +1,10 @@
-# `reactutilities`
+<img 
+    alt="react utilities banner"
+    src="./assets/banner.png"
+    align="center"
+/>
+
+<br>
 
 `reactutilities` is a package library of reusable components, hooks, and utilities for React applications. It's written tip-to-toe in TypeScript, and each package is thoroughly tested.
 

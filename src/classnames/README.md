@@ -15,7 +15,6 @@ pnpm add @reactutilities/classnames
 # Usage
 
 ```ts
-
 import cx from '@reactutilities/classnames';
 
 const isActive = true;
@@ -50,8 +49,7 @@ This package provides a single default export that accepts any number of argumen
 It also supports nested arrays and objects to provide more flexibility in generating class names. Here's an example of how to use nested arrays and objects:
 
 ```ts
-
-import cx from 'classnames-plus';
+import cx from '@reactutilities/classnames';
 
 const classNames = cx('button', {
   'button-active': true,
@@ -63,3 +61,19 @@ console.log(classNames);
 // Output: "button button-active button-large-desktop button-large-mobile button-red-danger button-red-shadow button-red-solid-solid button-red-solid-alert"
 ```
 
+While this package is not restricted to use in React applications (it has zero dependencies), one of the primary uses of this API is to simplify the `className` prop of JSX elements when complex or dynamic class states are needed.
+
+## Performance
+
+This package compared almost identically to the `classnames` package in benchmarking (used locally on an i7-6500U).
+
+|Package|Ops (s⁻¹)|Error (%)|
+|---|---|---|
+|`classnames`|5,404,020|±0.97|
+|`@reactutilities/classnames`|5,104,723|±1.12|
+
+
+
+## Acknowledgements
+
+This design was lifted from previous work by libraries like `classnames` and `clsx`. 

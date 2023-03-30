@@ -1,5 +1,3 @@
-    useDebounce: This hook delays the execution of a function until a certain amount of time has passed, useful for input fields or search bars.
-
     useThrottle: Similar to useDebounce, but instead of delaying the execution of a function, it limits the number of times a function can be called in a given period of time.
 
     useMediaQuery: This hook allows you to detect the screen size and apply different styles or logic accordingly.

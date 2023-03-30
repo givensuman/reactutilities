@@ -1,4 +1,4 @@
-import cx from "."
+import cx from '.'
 
 describe('cx', () => {
     it('returns an empty string for no arguments', () => {

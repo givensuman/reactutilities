@@ -6,9 +6,9 @@ describe('For component', () => {
   it('renders children for each item in the array', () => {
     const data = ['apple', 'banana', 'cherry'];
     render(<For each={data}>{(item) => <div key={item}>{item}</div>}</For>);
-    expect(screen.getByText('apple')).toBeInTheDocument();
-    expect(screen.getByText('banana')).toBeInTheDocument();
-    expect(screen.getByText('cherry')).toBeInTheDocument();
+    expect(screen.getByText('apple')).toBeInTheDocument;
+    expect(screen.getByText('banana')).toBeInTheDocument;
+    expect(screen.getByText('cherry')).toBeInTheDocument;
   });
 
   it('renders fallback if the array is empty', () => {
@@ -18,7 +18,7 @@ describe('For component', () => {
         {(item) => <div key={item}>{item}</div>}
       </For>
     );
-    expect(screen.getByText('no items')).toBeInTheDocument();
+    expect(screen.getByText('no items')).toBeInTheDocument;
   });
 
   it('returns an array of children for each item in the array', () => {

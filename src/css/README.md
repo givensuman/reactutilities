@@ -1,21 +1,42 @@
 # css
 
-```ts
+A template literal tag function for serializing CSS styles. Uses the `serializeStyles` function from `@emotion/serialize`.
+
+## Usage
+
+To use the css function, first install the package:
+
+```bash
+npm install @reactutilities/css
+# or
+yarn add @reactutilities/css
+# or 
+pnpm add @reactutilities/css
+```
+
+Then import it into your code:
+
+```typescript
 import css from '@reactutilities/css';
 
-const cssString = `
-    background-color: #008CBA;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-
-    &:hover {
-        background-color: #0077B5;
-    }
+const color = 'blue';
+const fontSize = '16px';
+const style = css`
+  color: ${color};
+  font-size: ${fontSize};
+  &:hover {
+    color: red;
+  }
 `;
-
-const styleObject = css(cssString);
-console.log(styleObject);
+console.log(style); // "color:blue;font-size:16px;&:hover{color:red;}"
 ```
+
+You can use the serialized CSS string as a React style prop or in any other context where you need a CSS string.
+
+## Acknowledgments
+
+This package is based on the serializeStyles function from the Emotion library. Emotion is a powerful CSS-in-JS library with many advanced features and integrations. If you need more advanced styling capabilities, we recommend checking out Emotion.
+
+## License
+
+This package is licensed under the MIT License. See the LICENSE file for more information.

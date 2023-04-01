@@ -2,14 +2,16 @@ import { useState, useEffect } from 'react';
 
 type Listener<T> = (newValue: T) => void;
 
+type Falsy = undefined | null | false
+
 type Store<T> = {
-  get: () => T;
+  get: <R>(callback: (state: T) => R) => R;
   set: (newValue: Partial<T> | ((prevState: T) => Partial<T>)) => void;
-  subscribe: (key: keyof T | undefined | null | false, listener: Listener<T>) => () => void;
+  subscribe: (key: keyof T | Falsy, listener: Listener<T>) => () => void;
 };
 
 /**
- * A simple state management library that provides a small and intuitive API for managing global state in a React application.
+ * A simple store generator that provides a small and intuitive API for managing global state in a React application.
  * The store object contains a `get` method to retrieve the current state, a `set` method to update the state,
  * and a `subscribe` method to listen for changes to the state.
  *
@@ -28,19 +30,33 @@ function create<T extends {}>(initialState: T): Store<T> {
     listeners.forEach((listener) => listener(state));
   }
 
-  function get() {
-    const [_, setStateWrapper] = useState({});
+  function get<R>(callback: (state: T) => R): R {
+    const
+
+
+function create<T extends {}>(initialState: T): Store<T> {
+  let state = initialState;
+  const listeners = new Set<Listener<T>>();
+
+  function set(newState: Partial<T> | ((prevState: T) => Partial<T>)) {
+    state = typeof newState === 'function' ? { ...state, ...newState(state) } : { ...state, ...newState };
+    listeners.forEach((listener) => listener(state));
+  }
+
+  function get<R>(callback: (state: T) => R): R {
+    const [_, setStateWrapper] = useState<null>(null);
     useEffect(() => {
-      const listener = () => setStateWrapper({});
+      const listener = () => setStateWrapper(null);
       listeners.add(listener);
       return () => {
         listeners.delete(listener);
       };
     }, []);
-    return state;
+    const currentState = state as T;
+    return callback(currentState);
   }
 
-  function subscribe(key: keyof T | undefined | null | false = undefined, listener: Listener<T>) {
+  function subscribe(key: keyof T | Falsy, listener: Listener<T>) {
     const newListener = (newValue: T) => {
       if (!key || key in newValue) {
         listener(newValue);

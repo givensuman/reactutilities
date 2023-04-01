@@ -49,6 +49,12 @@ const unsubscribe = userStore.subscribe(_, (newUser) => {
 });
 ```
 
+For dynamic access to the store when using `get` and `set`, use a callback with state as an argument:
+```ts
+userStore.set(({ age }) => ({ age: age + 1 }))
+userStore.get(state => state.age)
+```
+
 ## Acknowledgments
 
 While not interchangeable, this API was inspired by the `zustand` library.

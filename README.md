@@ -14,11 +14,11 @@ This is a monorepo for the packages developed as part of the `@reactutilities` N
 
 | Package | Description |
 | --- | --- |
-| `@reactutilities/store` | An efficient and intuitive way to manage state in your React applications |
+| `@reactutilities/stores` | Ways to manage state in your React applications |
 | `@reactutilities/hooks` | A collection of React hooks for common and not-so-common use cases alike |
 | `@reactutilities/controls` | Components for streamlining control flow and logic in your React component's JSX |
 | `@reactutilities/classnames` | A lightweight utility function to easily generate class names from a set of conditions, including support for nested arrays and objects |
-| `@reactutilities/css | A template literal tag function for serializing CSS styles. |
+| `@reactutilities/css` | A template literal tag function for serializing CSS styles. |
 
 ## Contributing
 
@@ -31,3 +31,7 @@ Almost all of the README documentation for this library was written by ChatGPT.
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
+## Support
+
+This repo has, like, a lot of code. If you'd like to [buy me a coffee](https://www.buymeacoffee.com/givensuman), it would keep me awake while maintaining it. 

@@ -21,20 +21,7 @@ type Store<T> = {
  * 
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
-function create<T extends {}>(initialState: T): Store<T> {
-  let state = initialState;
-  const listeners = new Set<Listener<T>>();
-
-  function set(newState: Partial<T> | ((prevState: T) => Partial<T>)) {
-    state = typeof newState === 'function' ? { ...state, ...newState(state) } : { ...state, ...newState };
-    listeners.forEach((listener) => listener(state));
-  }
-
-  function get<R>(callback: (state: T) => R): R {
-    const
-
-
-function create<T extends {}>(initialState: T): Store<T> {
+function createStore<T extends {}>(initialState: T): Store<T> {
   let state = initialState;
   const listeners = new Set<Listener<T>>();
 
@@ -71,4 +58,4 @@ function create<T extends {}>(initialState: T): Store<T> {
   return { get, set, subscribe };
 }
 
-export default create;
+export default createStore;

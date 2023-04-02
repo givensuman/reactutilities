@@ -18,7 +18,7 @@ This is a monorepo for the packages developed as part of the `@reactutilities` N
 | `@reactutilities/hooks` | A collection of React hooks for common and not-so-common use cases alike |
 | `@reactutilities/controls` | Components for streamlining control flow and logic in your React component's JSX |
 | `@reactutilities/classnames` | A lightweight utility function to easily generate class names from a set of conditions, including support for nested arrays and objects |
-| `@reactutilities/css` | A template literal tag function for serializing CSS styles. |
+| `@reactutilities/css` | A template literal tag function for serializing CSS styles |
 
 ## Contributing
 

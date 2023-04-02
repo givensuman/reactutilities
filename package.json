@@ -7,10 +7,16 @@
     "lint:fix": "npm run lint -- --fix",
     "prettier": "npx prettier src test --check",
     "prettier:fix": "npm run prettier -- --write",
-    "install:store": "(cd ./store && pnpm install);",
-    "test:store": "(cd ./store && pnpm test);",
+    "install:stores": "(cd ./stores && pnpm install);",
+    "test:stores": "(cd ./stores && pnpm test);",
     "install:hooks": "(cd ./hooks && pnpm install);",
-    "test:hooks": "(cd ./hooks && pnpm test);"
+    "test:hooks": "(cd ./hooks && pnpm test);",
+    "install:classnames": "(cd classnames && pnpm install);",
+    "test:classnames": "(cd classnames && pnpm test);",
+    "install:css": "(cd css && pnpm install);",
+    "test:css": "(cd css && pnpm test);",
+    "install:controls": "(cd controls && pnpm install);",
+    "test:controls": "(cd controls && pnpm test);"
   },
   "devDependencies": {
     "@types/react": "^18.0.31",

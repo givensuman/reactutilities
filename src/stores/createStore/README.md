@@ -7,7 +7,7 @@ A simple state management library that provides a small and intuitive API for ma
 To create a new store, simply call the create function with an initial state:
 
 ```tsx
-import { create } from '@reactutilities/stores';
+import { createStore } from '@reactutilities/stores';
 
 type User = {
   name: string;
@@ -15,7 +15,7 @@ type User = {
   age: number;
 };
 
-const userStore = create<User>({
+const userStore = createStore<User>({
   name: 'John Doe',
   email: 'john.doe@example.com',
   age: 30,
@@ -50,6 +50,7 @@ const unsubscribe = userStore.subscribe(_, (newUser) => {
 ```
 
 For dynamic access to the store when using `get` and `set`, use a callback with state as an argument:
+
 ```ts
 userStore.set(({ age }) => ({ age: age + 1 }))
 userStore.get(state => state.age)

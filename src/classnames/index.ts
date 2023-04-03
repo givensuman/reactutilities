@@ -8,7 +8,6 @@ type ClassValue =
   | { [key: string]: any }
   | Iterable<ClassValue>
 
-
 /**
  * Returns a string of space-separated class names generated from the given arguments. Supports nested arrays and objects.
  *

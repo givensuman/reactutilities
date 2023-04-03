@@ -8,7 +8,7 @@
 
 `reactutilities` is a package library of reusable components, hooks, and utilities for React applications. It's written tip-to-toe in TypeScript, and each package is thoroughly tested.
 
-This is a monorepo for the packages developed as part of the `@reactutilities` NPM organization. For details on any of the various APIs or library details, check out any package's README in its corresponding directory, which you'll find in `/src`.
+This is a monorepo for the packages developed as part of the `@reactutilities` NPM organization. For details on any of the various APIs or library details, check out any package's README in its corresponding directory, which you'll find in the `/src` directory.
 
 ## Packages
 
@@ -31,7 +31,3 @@ Almost all of the README documentation for this library was written by ChatGPT.
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
-## Support
-
-This repo has, like, a lot of code. If you'd like to [buy me a coffee](https://www.buymeacoffee.com/givensuman), it would keep me awake while maintaining it. 

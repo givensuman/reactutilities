@@ -46,7 +46,7 @@ This package provides a single default export that accepts any number of argumen
 
 ### Nested Arrays/Objects
 
-It also supports nested arrays and objects to provide more flexibility in generating class names. Here's an example of how to use nested arrays and objects:
+It also supports nested arrays and objects to provide more flexibility in generating class names. Here's an example of how to use this kind of advanced class structuring:
 
 ```ts
 import cx from '@reactutilities/classnames';

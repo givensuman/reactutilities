@@ -29,7 +29,7 @@ This will render:
 The `Repeat` component accepts the following props:
 |Name |Type |Description|
 |---|---|---|
-|times |`number`A required number that specifies the number of times to repeat the child elements.|
+|times |`number`|A required number that specifies the number of times to repeat the child elements.|
 |children |`React.ReactNode` |A required set of valid React nodes to be repeated.|
 
 ## Example

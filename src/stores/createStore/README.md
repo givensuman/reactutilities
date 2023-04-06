@@ -1,10 +1,10 @@
-# create
+# createStore
 
-A simple state management library that provides a small and intuitive API for managing global state in a React application.
+A simple state management generator that provides a small and intuitive API for managing global state in a React application.
 
 ## Usage
 
-To create a new store, simply call the create function with an initial state:
+To create a new store, simply call the `createStore` function with an initial state:
 
 ```tsx
 import { createStore } from '@reactutilities/stores';

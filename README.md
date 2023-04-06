@@ -24,10 +24,6 @@ This is a monorepo for the packages developed as part of the `@reactutilities` N
 
 Contributions are welcome and encouraged! Please open an issue or submit a pull request if you have any suggestions or improvements.
 
-## Acknowledgements
-
-Almost all of the README documentation for this library was written by ChatGPT.
-
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)

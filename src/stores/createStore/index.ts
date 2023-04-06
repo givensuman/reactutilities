@@ -21,7 +21,7 @@ type Store<T> = {
  *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
-function createStore<T extends {}>(initialState: T): Store<T> {
+function createStore<T extends object>(initialState: T): Store<T> {
   let state = initialState;
   const listeners = new Set<Listener<T>>();
 

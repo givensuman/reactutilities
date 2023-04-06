@@ -1,3 +1,6 @@
-- Add test suite to store
-- Fix/add tests to all controls
-- Set up prettier, eslint
+CSS failing tests
+Stores failing tests
+Hooks missing tests
+
+Components is good to go
+Classnames is good to go

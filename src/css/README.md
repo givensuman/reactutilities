@@ -36,3 +36,7 @@ You can use the serialized CSS string as a React style prop or in any other cont
 ## Acknowledgments
 
 This package is based on the serializeStyles function from the Emotion library. Emotion is a powerful CSS-in-JS library with many advanced features and integrations. If you need more advanced styling capabilities, you should check out Emotion.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

@@ -75,3 +75,7 @@ This package compared almost identically to the `classnames` package in benchmar
 ## Acknowledgements
 
 This design was lifted from previous work by libraries like `classnames` and `clsx`.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

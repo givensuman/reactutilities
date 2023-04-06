@@ -29,3 +29,7 @@ This package ships with a number of useful components:
 ## Acknowledgements
 
 Many of these components were directly inspired by the "Control Flow" components built into the Solid.js library.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

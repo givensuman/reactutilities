@@ -2,52 +2,52 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Switch from '.';
 
-describe('Switch component', () => {
-  it('should render the default case if no case matches', () => {
-    const { container } = render(
-      <Switch value="unknown">
-        <Switch.Case when="one">
-          <div>One case</div>
-        </Switch.Case>
-        <Switch.Case when="two">
-          <div>Two case</div>
-        </Switch.Case>
-        <Switch.Default>
-          <div>Default case</div>
-        </Switch.Default>
-      </Switch>,
+describe('Switch', () => {
+  it('renders the correct SwitchCase when a match is found', () => {
+    const { getByText } = render(
+      <Switch value={2}>
+        <Switch.Case when={1}>One</Switch.Case>
+        <Switch.Case when={2}>Two</Switch.Case>
+        <Switch.Case when={3}>Three</Switch.Case>
+      </Switch>
     );
-    expect(container.innerHTML).toMatch('Default case');
+    expect(getByText('Two')).toBeInTheDocument;
   });
 
-  it('should render the matching case', () => {
-    const { container } = render(
-      <Switch value="two">
-        <Switch.Case when="one">
-          <div>One case</div>
-        </Switch.Case>
-        <Switch.Case when="two">
-          <div>Two case</div>
-        </Switch.Case>
-        <Switch.Default>
-          <div>Default case</div>
-        </Switch.Default>
-      </Switch>,
+  it('renders the correct SwitchDefault when no matches are found', () => {
+    const { getByText } = render(
+      <Switch value={4}>
+        <Switch.Case when={1}>One</Switch.Case>
+        <Switch.Case when={2}>Two</Switch.Case>
+        <Switch.Default>Not found</Switch.Default>
+      </Switch>
     );
-    expect(container.innerHTML).toMatch('Two case');
+    expect(getByText('Not found')).toBeInTheDocument;
   });
 
-  it('should render nothing when there is no default case and no matching case', () => {
+  it('renders nothing when no matches are found and there is no SwitchDefault', () => {
     const { container } = render(
-      <Switch value="unknown">
-        <Switch.Case when="one">
-          <div>One case</div>
-        </Switch.Case>
-        <Switch.Case when="two">
-          <div>Two case</div>
-        </Switch.Case>
-      </Switch>,
+      <Switch value={4}>
+        <Switch.Case when={1}>One</Switch.Case>
+        <Switch.Case when={2}>Two</Switch.Case>
+      </Switch>
     );
-    expect(container.innerHTML).toBe('');
+    expect(container.firstChild).toBeNull();
+  });
+
+  it('renders nested Switch components correctly', () => {
+    const { getByText } = render(
+      <Switch value={1}>
+        <Switch.Case when={1}>
+          <Switch value="foo">
+            <Switch.Case when="foo">Nested foo</Switch.Case>
+            <Switch.Default>Nested not found</Switch.Default>
+          </Switch>
+        </Switch.Case>
+        <Switch.Case when={2}>Two</Switch.Case>
+        <Switch.Default>Not found</Switch.Default>
+      </Switch>
+    );
+    expect(getByText('Nested foo')).toBeInTheDocument;
   });
 });

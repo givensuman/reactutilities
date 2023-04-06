@@ -7,7 +7,7 @@ interface ForProps<T> {
 }
 
 /**
- * A component that renders children for each item in an array.
+ * Renders children for each item in an array.
  *
  * @template T The type of each item in the array.
  * @param {T[]} props.each The array of items to render children for.

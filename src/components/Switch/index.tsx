@@ -1,58 +1,75 @@
 import React, { ReactNode } from 'react';
 
-type CaseProps = {
-  children: ReactNode;
-  when: any;
-};
-
-type DefaultProps = {
+type SwitchProps<T> = {
+  value: T;
   children: ReactNode;
 };
 
-type SwitchProps = {
-  value: any;
-  children: ReactNode;
+type SwitchCaseProps<T = undefined> = {
+  when: T;
+  children?: ReactNode;
 };
 
-function Switch(props: SwitchProps): JSX.Element {
-  const { value, children } = props;
+type SwitchDefaultProps = {
+  children?: ReactNode;
+};
 
-  let defaultCase: ReactNode | null = null;
+/**
+ * Renders the first child `Switch.Case` component whose `when` prop matches the `value` prop of the `Switch` component, or the first `Switch.Default` component if no `Switch.Case` components match.
+ * 
+ * @template T The type of the `value` prop for the `Switch` component.
+ * 
+ * @param {T} props.value The value to compare against the `when` prop of each child `Switch.Case` component.
+ * @param {React.ReactNode} props.children - The child components to render.
+ * 
+ * @returns The matching `Switch.Case` or `Switch.Default` component, or `null` if no match is found.
+ * 
+ * @see {@link https://github.com/givensuman/reactutilities} for more information.
+ */
+function Switch<T>({ value, children }: SwitchProps<T>): JSX.Element | null {
+  let defaultChild: React.ReactElement<SwitchDefaultProps> | null = null;
 
-  const childrenArray = React.Children.toArray(children);
+  for (let i = 0; i < React.Children.count(children); i++) {
+    if (children) {
+      const child = (children as React.ReactElement<SwitchCaseProps | SwitchDefaultProps>[])[i];
 
-  const cases = childrenArray.filter(
-    child => React.isValidElement<CaseProps>(child) && child.type === 'Case',
-  ) as React.ReactElement<CaseProps>[];
-
-  for (let i = 0; i < cases.length; i++) {
-    const child = cases[i];
-    if (child.props.when === value) {
-      return <>{child.props.children}</>;
+      if (child.type === SwitchCase && (child as React.ReactElement<SwitchCaseProps>).props.when === value) {
+        return child;
+      } else if (child.type === SwitchDefault) {
+        defaultChild = child;
+      }
     }
   }
 
-  const defaultCases = childrenArray.filter(
-    child =>
-      React.isValidElement<DefaultProps>(child) && child.type === 'Default',
-  ) as React.ReactElement<DefaultProps>[];
-
-  if (defaultCases.length > 0) {
-    defaultCase = defaultCases[0].props.children;
-  }
-
-  return <>{defaultCase}</>;
+  return defaultChild;
 }
 
-function Case(props: CaseProps): JSX.Element {
-  return <>{props.children}</>;
+/**
+ * Conditionally renders children if `when` prop matches the `value` prop of a `Switch` parent component.
+ * 
+ * @template T The type of the `when` prop for the `SwitchCase` component.
+ * 
+ * @param {T} props.when The value to compare against the `value` prop of the parent `Switch` component.
+ * @param {React.ReactNode} props.children The child components to render if the `when` prop matches.
+ * 
+ * @see {@link https://github.com/givensuman/reactutilities} for more information.
+ */
+export function SwitchCase<T>({ children }: SwitchCaseProps<T>): JSX.Element {
+  return <>{children}</>;
 }
 
-function Default(props: DefaultProps): JSX.Element {
-  return <>{props.children}</>;
+/**
+ * Fallback for a `Switch` parent component if no matching `Switch.Case` is found.
+ * 
+ * @param {React.ReactNode} props.children The child components to render if no `SwitchCase` components match.
+ * 
+ * @see {@link https://github.com/givensuman/reactutilities} for more information.
+ */
+export function SwitchDefault({ children }: SwitchDefaultProps) {
+  return <>{children}</>;
 }
 
-Switch.Case = Case;
-Switch.Default = Default;
+Switch.Case = SwitchCase;
+Switch.Default = SwitchDefault;
 
 export default Switch;

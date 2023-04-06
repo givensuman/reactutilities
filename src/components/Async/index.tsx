@@ -17,7 +17,7 @@ interface AsyncState<T> {
 }
 
 /**
- * A component that allows you to handle asynchronous data loading in a declarative way.
+ * Allows you to handle asynchronous data loading in a declarative way.
  *
  * @template T The type of data returned by the `await` function.
  *

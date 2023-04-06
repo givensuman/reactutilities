@@ -5,7 +5,7 @@ type DynamicProps<T = {}> = {
 } & T;
 
 /**
- * This component allows you to dynamically render any React component
+ * Allows you to dynamically render any React component
  * or HTML element and pass props through to it.
  *
  * @template T - The props type for the component.

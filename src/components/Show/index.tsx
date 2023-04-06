@@ -8,7 +8,7 @@ interface ShowProps<T, K> {
 }
 
 /**
- * A component that conditionally renders its children or a fallback element.
+ * Conditionally renders its children or a fallback element.
  *
  * @template T The type of the conditional value for `when`.
  * @template K The type of the conditional value for `unless`.

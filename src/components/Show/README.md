@@ -1,6 +1,6 @@
 # Show
 
-The `Show` component allows you to conditionally render a set of child elements or a fallback element based on a given value. It takes in a value to check for truthiness and any valid React nodes as children.
+The `Show` component allows you to conditionally render a set of child elements or a fallback element based on a given value. It takes a `when` condition to check for truthiness, an `unless` condition to check for falsiness, and any valid React nodes as children.
 
 ## Usage
 

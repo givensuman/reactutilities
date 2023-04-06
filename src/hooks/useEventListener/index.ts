@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-type EventType = keyof WindowEventMap
+type EventType = keyof WindowEventMap;
 
 /**
  * Attaches an event listener to the target element.
@@ -17,7 +17,7 @@ export function useEventListener(
   const eventTypes = Array.isArray(eventType) ? eventType : [eventType];
 
   useEffect(() => {
-    const eventHandlers = eventTypes.map((type) => ({ type, handler }));
+    const eventHandlers = eventTypes.map(type => ({ type, handler }));
 
     eventHandlers.forEach(({ type, handler }) => {
       target.addEventListener(type, handler);

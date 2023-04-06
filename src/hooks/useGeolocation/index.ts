@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 /**
  * useGeolocation - A React hook that retrieves the user's current geolocation from their browser
- * 
+ *
  * @returns An object containing the user's latitude, longitude, and error status
  */
 const useGeolocation = () => {

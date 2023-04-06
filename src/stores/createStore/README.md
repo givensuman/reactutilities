@@ -31,7 +31,7 @@ const currentUser = userStore.get(); // { name: 'John Doe', email: 'john.doe@exa
 
 userStore.set({ age: 31 }); // Updates the age to 31
 
-const unsubscribe = userStore.subscribe('name', (newUser) => {
+const unsubscribe = userStore.subscribe('name', newUser => {
   console.log(`Name changed to ${newUser.name}`);
 });
 
@@ -44,7 +44,7 @@ unsubscribe(); // Removes the listener
 You can also subscribe to the entire store by not passing a key to the `subscribe` function:
 
 ```tsx
-const unsubscribe = userStore.subscribe(_, (newUser) => {
+const unsubscribe = userStore.subscribe(_, newUser => {
   console.log('User changed:', newUser);
 });
 ```
@@ -52,8 +52,8 @@ const unsubscribe = userStore.subscribe(_, (newUser) => {
 For dynamic access to the store when using `get` and `set`, use a callback with state as an argument:
 
 ```ts
-userStore.set(({ age }) => ({ age: age + 1 }))
-userStore.get(state => state.age)
+userStore.set(({ age }) => ({ age: age + 1 }));
+userStore.get(state => state.age);
 ```
 
 ## Acknowledgments

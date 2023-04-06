@@ -1,21 +1,27 @@
-import React, { useState, useEffect } from 'react';
+# @reactutilities/components 🧰
 
-interface AsyncProps<T> {
-  await: () => Promise<T>;
-  loading?: React.ReactNode | (() => React.ReactNode);
-  error?: React.ReactNode | ((error: Error) => React.ReactNode);
-  success: React.ReactNode | ((data: T) => React.ReactNode);
-  onLoading?: () => void;
-  onError?: (error: Error) => void;
-  onSuccess?: (data: T) => void;
-}
+Components for streamlining control flow and logic in your React component's JSX
 
-interface AsyncState<T> {
-  status: 'idle' | 'pending' | 'error' | 'success';
-  data?: T;
-  error?: Error;
-}
+## Installation
 
+You can install the package via npm:
+
+```bash
+npm install @reactutilities/components
+# or
+yarn add @reactutilities/components
+# or
+pnpm i @reactutilities/components
+```
+
+## Components
+
+This package ships with a number of useful components:
+
+<details>
+<summary>Async</summary>
+
+```ts
 /**
  * A component that allows you to handle asynchronous data loading in a declarative way.
  *
@@ -34,54 +40,25 @@ interface AsyncState<T> {
  *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
-function Async<T>({
-  await: asyncFn,
-  loading,
-  error,
-  success,
-  onLoading,
-  onError,
-  onSuccess,
-}: AsyncProps<T>): JSX.Element {
-  const [asyncState, setAsyncState] = useState<AsyncState<T>>({
-    status: 'idle',
-  });
+```
 
-  const handleAsync = async () => {
-    setAsyncState({ status: 'pending' });
-    onLoading?.();
-    await asyncFn()
-      ?.then(data => {
-        onSuccess?.(data);
-        setAsyncState({ status: 'success', data });
-      })
-      .catch(error => {
-        onError?.(error);
-        setAsyncState({ status: 'error', error });
-      });
-  };
+</details>
+<details>
+    <summary>Dynamic</summary>
+</details>
+<details>
+    <summary>For</summary>
+</details>
+<details>
+    <summary>Repeat</summary>
+</details>
+<details>
+    <summary>Show</summary>
+</details>
+<details>
+    <summary>Switch</summary>
+</details>
 
-  useEffect(() => {
-    handleAsync();
-  }, [asyncFn, onLoading, onSuccess, onError]);
+## Acknowledgements
 
-  switch (asyncState.status) {
-    case 'idle':
-    case 'pending':
-      return typeof loading === 'function' ? <>{loading()}</> : <>{loading}</>;
-    case 'error':
-      return typeof error === 'function' ? (
-        <>{error(asyncState.error!)}</>
-      ) : (
-        <>{error}</>
-      );
-    case 'success':
-      return typeof success === 'function' ? (
-        <>{success(asyncState.data!)}</>
-      ) : (
-        <>{success}</>
-      );
-  }
-}
-
-export default Async;
+Many of these components were directly inspired by the "Control Flow" components built into the Solid.js library.

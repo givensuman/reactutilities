@@ -21,8 +21,8 @@ function Switch(props: SwitchProps): JSX.Element {
 
   const childrenArray = React.Children.toArray(children);
 
-  const cases = childrenArray.filter((child) =>
-    React.isValidElement<CaseProps>(child) && child.type === 'Case'
+  const cases = childrenArray.filter(
+    child => React.isValidElement<CaseProps>(child) && child.type === 'Case',
   ) as React.ReactElement<CaseProps>[];
 
   for (let i = 0; i < cases.length; i++) {
@@ -32,8 +32,9 @@ function Switch(props: SwitchProps): JSX.Element {
     }
   }
 
-  const defaultCases = childrenArray.filter((child) =>
-    React.isValidElement<DefaultProps>(child) && child.type === 'Default'
+  const defaultCases = childrenArray.filter(
+    child =>
+      React.isValidElement<DefaultProps>(child) && child.type === 'Default',
   ) as React.ReactElement<DefaultProps>[];
 
   if (defaultCases.length > 0) {

@@ -8,7 +8,7 @@ import { useState, useEffect } from 'react';
  * @param limit The maximum number of times the function can be called within the given time period.
  * @param period The time period (in milliseconds) during which the maximum number of function calls is limited.
  * @returns The throttled value.
- * 
+ *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
 function useThrottle<T>(value: T, limit: number, period: number): T {
@@ -27,7 +27,7 @@ function useThrottle<T>(value: T, limit: number, period: number): T {
   useEffect(() => {
     if (callCount < limit) {
       setThrottledValue(value);
-      setCallCount((count) => count + 1);
+      setCallCount(count => count + 1);
     }
   }, [value, limit, callCount]);
 

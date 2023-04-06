@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 
 /**
  * A React hook that detects when a key is pressed and runs an optional callback.
- * 
+ *
  * @param targetKey The key to detect. Can be a string or a number.
  * @param onKeyPress Optional callback that runs when `targetKey` is pressed.
  * @returns A boolean indicating whether the target key was pressed.
- * 
+ *
  * For more information, go [here](https://github.com/givensuman/reactutilities).
  */
-const useKeyPress = (targetKey: string | number, onKeyPress?: (event?: KeyboardEvent) => void): boolean => {
+const useKeyPress = (
+  targetKey: string | number,
+  onKeyPress?: (event?: KeyboardEvent) => void,
+): boolean => {
   const [keyPressed, setKeyPressed] = useState(false);
 
   useEffect(() => {
@@ -28,10 +31,10 @@ const useKeyPress = (targetKey: string | number, onKeyPress?: (event?: KeyboardE
     };
 
     const pressHandler = (event: KeyboardEvent) => {
-        if (event.key === keyString) {
-            if (onKeyPress) onKeyPress(event)
-        }
-    }
+      if (event.key === keyString) {
+        if (onKeyPress) onKeyPress(event);
+      }
+    };
 
     document.addEventListener('keydown', downHandler);
     document.addEventListener('keyup', upHandler);
@@ -40,7 +43,7 @@ const useKeyPress = (targetKey: string | number, onKeyPress?: (event?: KeyboardE
     return () => {
       document.removeEventListener('keydown', downHandler);
       document.removeEventListener('keyup', upHandler);
-    document.removeEventListener('keypress', pressHandler);
+      document.removeEventListener('keypress', pressHandler);
     };
   }, [targetKey]);
 

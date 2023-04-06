@@ -18,7 +18,10 @@ describe('useTimeout', () => {
 
   it('should cancel the timeout if the delay changes', () => {
     const callback = jest.fn();
-    const { rerender } = renderHook(({ delay }) => useTimeout(callback, delay), { initialProps: { delay: 1000 } });
+    const { rerender } = renderHook(
+      ({ delay }) => useTimeout(callback, delay),
+      { initialProps: { delay: 1000 } },
+    );
 
     rerender({ delay: 500 });
     act(() => {

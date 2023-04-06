@@ -8,7 +8,10 @@ import { useState, useEffect } from 'react';
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
 export function useWindowSize() {
-  const [windowSize, setWindowSize] = useState<{ width: number; height: number }>({
+  const [windowSize, setWindowSize] = useState<{
+    width: number;
+    height: number;
+  }>({
     width: window.innerWidth,
     height: window.innerHeight,
   });

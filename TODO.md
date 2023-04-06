@@ -1,7 +1,3 @@
 - Add test suite to store
 - Fix/add tests to all controls
 - Set up prettier, eslint
-- Context store (returns { Provider, store })
----
-- form lib??
-- query lib??

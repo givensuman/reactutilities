@@ -43,6 +43,8 @@ describe('useToggle', () => {
         // @ts-ignore
         result.current[2]('invalid value'); // setValueWithValidation
       });
-    }).toThrow('useToggle setValue argument must be a boolean, but received string');
+    }).toThrow(
+      'useToggle setValue argument must be a boolean, but received string',
+    );
   });
 });

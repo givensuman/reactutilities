@@ -28,7 +28,7 @@ describe('useInterval', () => {
     const interval2 = 500;
     const { rerender } = renderHook(
       ({ interval }) => useInterval(callback, interval),
-      { initialProps: { interval: interval1 } }
+      { initialProps: { interval: interval1 } },
     );
 
     jest.advanceTimersByTime(interval1);

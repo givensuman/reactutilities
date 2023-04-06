@@ -7,10 +7,13 @@ import { useState, useEffect } from 'react';
  * @param {string} key The key to use when storing the value in `localStorage`.
  * @param {T} initialValue The initial value to use when the key is not found in `localStorage`.
  * @returns {[T, (value: T) => void]} A tuple containing the current value and a function to update it.
- * 
+ *
  * For more information, go [here](https://github.com/givensuman/reactutilities).
  */
-function useLocalStorage<T>(key: string, initialValue: T): [T, (value: T) => void] {
+function useLocalStorage<T>(
+  key: string,
+  initialValue: T,
+): [T, (value: T) => void] {
   const [value, setValue] = useState<T>(() => {
     const storedValue = localStorage.getItem(key);
     if (storedValue !== null) {

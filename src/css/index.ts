@@ -1,9 +1,8 @@
-
 import { Interpolation, serializeStyles } from '@emotion/serialize';
 
 /**
  * A template literal tag function for serializing CSS styles.
- * 
+ *
  * @param args - The template literal strings and interpolated values
  * @returns A serialized CSS string
  *
@@ -19,7 +18,7 @@ import { Interpolation, serializeStyles } from '@emotion/serialize';
  *   }
  * `;
  * ```
- * 
+ *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
 function css(...args: (TemplateStringsArray | Interpolation<unknown>)[]) {

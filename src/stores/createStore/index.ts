@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 type Listener<T> = (newValue: T) => void;
 
-type Falsy = undefined | null | false
+type Falsy = undefined | null | false;
 
 type Store<T> = {
   get: <R>(callback: (state: T) => R) => R;
@@ -18,7 +18,7 @@ type Store<T> = {
  * @template T The type of the state object.
  * @param {T} initialState The initial state object.
  * @returns An object containing `get`, `set`, and `subscribe` methods to interact with the state.
- * 
+ *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
 function createStore<T extends {}>(initialState: T): Store<T> {
@@ -26,8 +26,11 @@ function createStore<T extends {}>(initialState: T): Store<T> {
   const listeners = new Set<Listener<T>>();
 
   function set(newState: Partial<T> | ((prevState: T) => Partial<T>)) {
-    state = typeof newState === 'function' ? { ...state, ...newState(state) } : { ...state, ...newState };
-    listeners.forEach((listener) => listener(state));
+    state =
+      typeof newState === 'function'
+        ? { ...state, ...newState(state) }
+        : { ...state, ...newState };
+    listeners.forEach(listener => listener(state));
   }
 
   function get<R>(callback: (state: T) => R): R {

@@ -17,7 +17,7 @@ describe('createStore', () => {
   it('updates the state correctly with a function', () => {
     const initialState = { count: 0 };
     const store = createStore(initialState);
-    store.set((prevState) => ({ count: prevState.count + 1 }));
+    store.set(prevState => ({ count: prevState.count + 1 }));
     expect(store.get()).toEqual({ count: 1 });
   });
 
@@ -38,7 +38,10 @@ describe('createStore', () => {
     store.subscribe('count', mockCountSubscriber);
     store.subscribe('name', mockNameSubscriber);
     store.set({ count: 1, name: 'Jane' });
-    expect(mockCountSubscriber).toHaveBeenCalledWith({ count: 1, name: 'John' });
+    expect(mockCountSubscriber).toHaveBeenCalledWith({
+      count: 1,
+      name: 'John',
+    });
     expect(mockNameSubscriber).toHaveBeenCalledWith({ count: 1, name: 'Jane' });
   });
 

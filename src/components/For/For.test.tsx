@@ -5,7 +5,7 @@ import For from '.';
 describe('For component', () => {
   it('renders children for each item in the array', () => {
     const data = ['apple', 'banana', 'cherry'];
-    render(<For each={data}>{(item) => <div key={item}>{item}</div>}</For>);
+    render(<For each={data}>{item => <div key={item}>{item}</div>}</For>);
     expect(screen.getByText('apple')).toBeInTheDocument;
     expect(screen.getByText('banana')).toBeInTheDocument;
     expect(screen.getByText('cherry')).toBeInTheDocument;
@@ -15,8 +15,8 @@ describe('For component', () => {
     const data: string[] = [];
     render(
       <For each={data} fallback={<div>no items</div>}>
-        {(item) => <div key={item}>{item}</div>}
-      </For>
+        {item => <div key={item}>{item}</div>}
+      </For>,
     );
     expect(screen.getByText('no items')).toBeInTheDocument;
   });
@@ -25,7 +25,7 @@ describe('For component', () => {
     const data = ['apple', 'banana', 'cherry'];
     const children = (item: string) => <div key={item}>{item}</div>;
     const result = render(<For each={data}>{children}</For>);
-    const renderedChildren = data.map((item) => result.getByText(item));
+    const renderedChildren = data.map(item => result.getByText(item));
     expect(renderedChildren.length).toBe(3);
   });
 

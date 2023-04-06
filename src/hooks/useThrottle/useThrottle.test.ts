@@ -10,9 +10,12 @@ describe('useThrottle', () => {
   it('throttles the value to the specified limit', () => {
     jest.useFakeTimers();
 
-    const { result, rerender } = renderHook((props) => useThrottle(props.value, props.limit, props.period), {
-      initialProps: { value: 'hello', limit: 2, period: 1000 },
-    });
+    const { result, rerender } = renderHook(
+      props => useThrottle(props.value, props.limit, props.period),
+      {
+        initialProps: { value: 'hello', limit: 2, period: 1000 },
+      },
+    );
 
     expect(result.current).toBe('hello');
 

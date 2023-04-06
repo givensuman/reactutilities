@@ -12,7 +12,7 @@ type AnyEvent = MouseEvent | TouchEvent;
  */
 function useClickOutside<T extends HTMLElement = HTMLElement>(
   ref: RefObject<T>,
-  handler: (event: AnyEvent) => void
+  handler: (event: AnyEvent) => void,
 ): void {
   useEffect(() => {
     const listener = (event: AnyEvent) => {

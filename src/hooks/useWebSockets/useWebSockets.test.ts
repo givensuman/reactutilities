@@ -22,8 +22,14 @@ describe('useWebSocket', () => {
     expect(global.WebSocket).toHaveBeenCalledTimes(1);
     expect(global.WebSocket).toHaveBeenCalledWith('ws://localhost:3000');
     expect(mockWebSocket.addEventListener).toHaveBeenCalledTimes(2);
-    expect(mockWebSocket.addEventListener).toHaveBeenCalledWith('open', expect.any(Function));
-    expect(mockWebSocket.addEventListener).toHaveBeenCalledWith('message', expect.any(Function));
+    expect(mockWebSocket.addEventListener).toHaveBeenCalledWith(
+      'open',
+      expect.any(Function),
+    );
+    expect(mockWebSocket.addEventListener).toHaveBeenCalledWith(
+      'message',
+      expect.any(Function),
+    );
     expect(result.current.readyState).toBe(WebSocket.CONNECTING);
   });
 
@@ -80,7 +86,13 @@ describe('useWebSocket', () => {
     unmount();
 
     expect(mockWebSocket.removeEventListener).toHaveBeenCalledTimes(2);
-    expect(mockWebSocket.removeEventListener).toHaveBeenCalledWith('open', expect.any(Function));
-    expect(mockWebSocket.removeEventListener).toHaveBeenCalledWith('message', expect.any(Function));
+    expect(mockWebSocket.removeEventListener).toHaveBeenCalledWith(
+      'open',
+      expect.any(Function),
+    );
+    expect(mockWebSocket.removeEventListener).toHaveBeenCalledWith(
+      'message',
+      expect.any(Function),
+    );
   });
 });

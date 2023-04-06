@@ -26,33 +26,30 @@ interface IntersectionObserverResult {
  *
  * @remarks This hook may not be supported by all browsers. See the Intersection
  * Observer API documentation for details.
- * 
+ *
  * @see {@link https://github.com/givensuman/reactutilities}
  */
 const useIntersectionObserver = (
   ref: RefObject<Element>,
-  options: IntersectionObserverOptions = {}
+  options: IntersectionObserverOptions = {},
 ): IntersectionObserverResult => {
   const [observer, setObserver] = useState<IntersectionObserver>();
   const [result, setResult] = useState<IntersectionObserverResult>({
     isIntersecting: false,
     intersectionRatio: 0,
     intersectionRect: new DOMRectReadOnly(),
-    boundingClientRect: new DOMRectReadOnly()
+    boundingClientRect: new DOMRectReadOnly(),
   });
 
   useEffect(() => {
-    const currentObserver = new IntersectionObserver(
-      ([entry]) => {
-        setResult({
-          isIntersecting: entry.isIntersecting,
-          intersectionRatio: entry.intersectionRatio,
-          intersectionRect: entry.intersectionRect,
-          boundingClientRect: entry.boundingClientRect
-        });
-      },
-      options
-    );
+    const currentObserver = new IntersectionObserver(([entry]) => {
+      setResult({
+        isIntersecting: entry.isIntersecting,
+        intersectionRatio: entry.intersectionRatio,
+        intersectionRect: entry.intersectionRect,
+        boundingClientRect: entry.boundingClientRect,
+      });
+    }, options);
     setObserver(currentObserver);
 
     return () => {

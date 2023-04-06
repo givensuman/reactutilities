@@ -19,7 +19,9 @@ describe('useOnClickOutside', () => {
 
     const outsideElement = document.createElement('div');
     document.body.appendChild(outsideElement);
-    outsideElement.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+    outsideElement.dispatchEvent(
+      new MouseEvent('mousedown', { bubbles: true }),
+    );
 
     expect(handler).toHaveBeenCalled();
   });
@@ -29,7 +31,7 @@ describe('useOnClickOutside', () => {
 
     const insideElement = document.createElement('div');
     if (ref.current) {
-        ref.current.appendChild(insideElement);
+      ref.current.appendChild(insideElement);
     }
     insideElement.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
 
@@ -43,7 +45,9 @@ describe('useOnClickOutside', () => {
 
     const outsideElement = document.createElement('div');
     document.body.appendChild(outsideElement);
-    outsideElement.dispatchEvent(new MouseEvent('mousedown', { bubbles: true }));
+    outsideElement.dispatchEvent(
+      new MouseEvent('mousedown', { bubbles: true }),
+    );
 
     expect(handler).not.toHaveBeenCalled();
   });

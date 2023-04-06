@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
  * Detects whether the mouse pointer is hovering over a specified element or not.
  * @param ref - A reference to the DOM element to monitor for hover state changes.
  * @returns A boolean value representing whether the mouse is hovering over the element or not.
- * 
+ *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
-function useHover<T extends HTMLElement = HTMLElement>(ref: React.RefObject<T>): boolean {
+function useHover<T extends HTMLElement = HTMLElement>(
+  ref: React.RefObject<T>,
+): boolean {
   const [isHovering, setIsHovering] = useState(false);
 
   const handleMouseOver = () => setIsHovering(true);

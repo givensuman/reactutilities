@@ -9,9 +9,7 @@ describe('css function', () => {
         color: red;
       }
     `;
-    expect(style).toEqual(
-      'color:blue;font-size:16px;&:hover{color:red;}'
-    );
+    expect(style).toEqual('color:blue;font-size:16px;&:hover{color:red;}');
   });
 
   it('should handle interpolated values correctly', () => {
@@ -24,9 +22,7 @@ describe('css function', () => {
         color: red;
       }
     `;
-    expect(style).toEqual(
-      'color:blue;font-size:16px;&:hover{color:red;}'
-    );
+    expect(style).toEqual('color:blue;font-size:16px;&:hover{color:red;}');
   });
 
   it('should handle nested selectors correctly', () => {
@@ -41,7 +37,7 @@ describe('css function', () => {
       }
     `;
     expect(style).toEqual(
-      'color:blue;font-size:16px;&:hover{color:red;& .nested{color:green;}}'
+      'color:blue;font-size:16px;&:hover{color:red;& .nested{color:green;}}',
     );
   });
 

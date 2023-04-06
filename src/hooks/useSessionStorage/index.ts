@@ -5,10 +5,13 @@ import { useState, useEffect } from 'react';
  * @param key The key to use for storing and retrieving data from the session storage.
  * @param initialValue The initial value to use if no value is currently stored in session storage for the given key.
  * @returns A tuple containing the current value and a function to update the value in session storage.
- * 
+ *
  * For more information, go [here](https://github.com/givensuman/reactutilities).
  */
-function useSessionStorage<T>(key: string, initialValue: T): [T, (value: T) => void] {
+function useSessionStorage<T>(
+  key: string,
+  initialValue: T,
+): [T, (value: T) => void] {
   const [state, setState] = useState<T>(() => {
     const storedValue = sessionStorage.getItem(key);
     if (storedValue !== null) {

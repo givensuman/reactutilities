@@ -1,14 +1,21 @@
 {
   "name": "controls",
   "version": "1.0.0",
-  "description": "",
+  "description": "Components for streamlining control flow and logic in your React component's JSX",
   "main": "index.js",
   "scripts": {
     "test": "pnpm jest"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "react",
+    "utilities",
+    "components",
+    "control",
+    "flow",
+    "logic"
+  ],
+  "author": "Given Suman",
+  "license": "MIT",
   "dependencies": {
     "react": "^18.2.0"
   },

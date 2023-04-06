@@ -7,10 +7,11 @@ describe('useStore', () => {
   it('should update state when set method is called', () => {
     const TestComponent = () => {
       const { get, set } = useStore<{ count: number }>({ count: 0 });
-      const incrementCount = () => set({ count: get((state) => state.count + 1) });
+      const incrementCount = () =>
+        set({ count: get(state => state.count + 1) });
       return (
         <div>
-          <span data-testid="count">{get((state) => state.count)}</span>
+          <span data-testid="count">{get(state => state.count)}</span>
           <button data-testid="increment-btn" onClick={incrementCount}>
             Increment
           </button>
@@ -20,7 +21,7 @@ describe('useStore', () => {
     render(
       <StoreProvider>
         <TestComponent />
-      </StoreProvider>
+      </StoreProvider>,
     );
     const count = screen.getByTestId('count');
     expect(count.textContent).toBe('0');
@@ -33,18 +34,21 @@ describe('useStore', () => {
 
   it('should update only subscribed state when set method is called with a specific key', () => {
     const TestComponent = () => {
-      const { get, set, subscribe } = useStore<{ count: number; name: string }>({ count: 0, name: '' });
+      const { get, set, subscribe } = useStore<{ count: number; name: string }>(
+        { count: 0, name: '' },
+      );
       const updateName = () => set({ name: 'John Doe' });
-      const incrementCount = () => set({ count: get((state) => state.count + 1) });
-      subscribe('name', (state) => console.log('name updated', state.name));
-      subscribe('count', (state) => console.log('count updated', state.count));
+      const incrementCount = () =>
+        set({ count: get(state => state.count + 1) });
+      subscribe('name', state => console.log('name updated', state.name));
+      subscribe('count', state => console.log('count updated', state.count));
       return (
         <div>
-          <span data-testid="count">{get((state) => state.count)}</span>
+          <span data-testid="count">{get(state => state.count)}</span>
           <button data-testid="increment-btn" onClick={incrementCount}>
             Increment
           </button>
-          <span data-testid="name">{get((state) => state.name)}</span>
+          <span data-testid="name">{get(state => state.name)}</span>
           <button data-testid="update-name-btn" onClick={updateName}>
             Update Name
           </button>
@@ -54,7 +58,7 @@ describe('useStore', () => {
     render(
       <StoreProvider>
         <TestComponent />
-      </StoreProvider>
+      </StoreProvider>,
     );
     const count = screen.getByTestId('count');
     expect(count.textContent).toBe('0');

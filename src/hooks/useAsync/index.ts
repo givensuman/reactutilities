@@ -2,14 +2,17 @@ import { useEffect, useState } from 'react';
 
 /**
  * Simplifies the process of handling asynchronous functions and updating the UI when the data is ready.
- * 
+ *
  * @template T - The type of data being fetched asynchronously.
  * @param {() => Promise<T>} asyncFunction - The asynchronous function to execute.
  * @param {any[]} [deps=[]] - An optional array of dependencies that the hook should watch for changes.
  * @returns {AsyncState<T>} An object containing the state of the asynchronous operation.
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
-function useAsync<T>(asyncFunction: () => Promise<T>, deps: any[] = []): AsyncState<T> {
+function useAsync<T>(
+  asyncFunction: () => Promise<T>,
+  deps: any[] = [],
+): AsyncState<T> {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);

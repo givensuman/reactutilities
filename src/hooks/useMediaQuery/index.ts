@@ -41,7 +41,8 @@ const getQuery = (query: string | MediaQueryObject): string => {
 
 const convertValue = (value: MediaQueryValue): string => {
   if (typeof value === 'number') return `${value}px`;
-  if (!isNaN(parseFloat(value)) && isFinite(parseFloat(value))) return `${value}px`;
+  if (!isNaN(parseFloat(value)) && isFinite(parseFloat(value)))
+    return `${value}px`;
   return value;
 };
 

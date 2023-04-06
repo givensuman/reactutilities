@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from 'react';
  * required for the user to be considered idle.
  *
  * @returns {boolean} A boolean value indicating whether the user is currently idle.
- * 
+ *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
 const useIdleTimer = (idleTime: number): boolean => {

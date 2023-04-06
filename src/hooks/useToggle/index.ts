@@ -9,25 +9,24 @@ type UseToggleReturnType = [boolean, () => void, (value: boolean) => void];
  * @param initialValue The initial boolean value for the toggle state. Defaults to `false`.
  * @returns A tuple containing the current boolean value of the toggle state, a function to toggle
  * the state between `true` and `false`, and a function to set the state to a specific boolean value.
- * 
+ *
  * For more information, go [here](https://github.com/givensuman/reactutilities).
  */
-function useToggle(initialValue: boolean = false): UseToggleReturnType {
+function useToggle(initialValue = false): UseToggleReturnType {
   const [value, setValue] = useState<boolean>(initialValue);
 
   const toggleValue = useCallback(() => {
-    setValue((prevValue) => !prevValue);
+    setValue(prevValue => !prevValue);
   }, []);
 
-  const setValueWithValidation = useCallback(
-    (newValue: boolean) => {
-      if (typeof newValue !== 'boolean') {
-        throw new Error(`useToggle setValue argument must be a boolean, but received ${typeof newValue}`);
-      }
-      setValue(newValue);
-    },
-    []
-  );
+  const setValueWithValidation = useCallback((newValue: boolean) => {
+    if (typeof newValue !== 'boolean') {
+      throw new Error(
+        `useToggle setValue argument must be a boolean, but received ${typeof newValue}`,
+      );
+    }
+    setValue(newValue);
+  }, []);
 
   return [value, toggleValue, setValueWithValidation];
 }

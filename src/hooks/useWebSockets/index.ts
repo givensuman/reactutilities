@@ -7,7 +7,9 @@ interface WebSocketEventMap {
   open: Event;
 }
 
-type WebSocketEventHandler<K extends keyof WebSocketEventMap> = (event: WebSocketEventMap[K]) => void;
+type WebSocketEventHandler<K extends keyof WebSocketEventMap> = (
+  event: WebSocketEventMap[K],
+) => void;
 
 interface UseWebSocketOptions {
   onOpen?: WebSocketEventHandler<'open'>;
@@ -26,7 +28,7 @@ interface UseWebSocketOptions {
  * The `send` function can be used to send messages over the WebSocket connection.
  * The `lastMessage` property can be used to access the last message received over the WebSocket connection.
  * The `readyState` property can be used to check if the connection is currently open.
- * 
+ *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
 export function useWebSocket(url: string, options: UseWebSocketOptions = {}) {
@@ -44,12 +46,12 @@ export function useWebSocket(url: string, options: UseWebSocketOptions = {}) {
   useEffect(() => {
     const socket = new WebSocket(url);
 
-    const handleOpen: WebSocketEventHandler<'open'> = (event) => {
+    const handleOpen: WebSocketEventHandler<'open'> = event => {
       setIsConnected(true);
       onOpen?.(event);
     };
 
-    const handleClose: WebSocketEventHandler<'close'> = (event) => {
+    const handleClose: WebSocketEventHandler<'close'> = event => {
       setIsConnected(false);
       onClose?.(event);
 
@@ -61,7 +63,7 @@ export function useWebSocket(url: string, options: UseWebSocketOptions = {}) {
       }
     };
 
-    const handleError: WebSocketEventHandler<'error'> = (event) => {
+    const handleError: WebSocketEventHandler<'error'> = event => {
       onError?.(event);
 
       if (reconnectOnError) {
@@ -72,7 +74,7 @@ export function useWebSocket(url: string, options: UseWebSocketOptions = {}) {
       }
     };
 
-    const handleMessage: WebSocketEventHandler<'message'> = (event) => {
+    const handleMessage: WebSocketEventHandler<'message'> = event => {
       onMessage?.(event);
     };
 

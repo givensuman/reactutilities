@@ -6,7 +6,9 @@ describe('useEventListener', () => {
   test('attaches and detaches an event listener', () => {
     const handler = jest.fn();
     const target = document.createElement('div');
-    const { unmount } = renderHook(() => useEventListener('click', handler, target));
+    const { unmount } = renderHook(() =>
+      useEventListener('click', handler, target),
+    );
 
     // trigger a click event on the target
     act(() => {
@@ -29,7 +31,7 @@ describe('useEventListener', () => {
     const handler = jest.fn();
     const target = document.createElement('div');
     const { unmount } = renderHook(() =>
-      useEventListener(['mousedown', 'touchstart'], handler, target)
+      useEventListener(['mousedown', 'touchstart'], handler, target),
     );
 
     // trigger a mousedown event on the target
@@ -63,7 +65,9 @@ describe('useEventListener', () => {
   test('works with ref targets', () => {
     const handler = jest.fn();
     const ref = useRef<HTMLButtonElement>(null);
-    const { unmount } = renderHook(() => useEventListener('click', handler, ref.current ?? window));
+    const { unmount } = renderHook(() =>
+      useEventListener('click', handler, ref.current ?? window),
+    );
 
     // trigger a click event on the ref's current element
     act(() => {

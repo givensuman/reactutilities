@@ -28,11 +28,11 @@ import { Counter } from './Counter';
 const initialState = { count: 0 };
 
 function App() {
-  return (
-    <StoreProvider initialState={initialState}>
-      <Counter />
-    </StoreProvider>
-  );
+return (
+<StoreProvider initialState={initialState}>
+<Counter />
+</StoreProvider>
+);
 }
 
 Then, in any component that needs access to the global state, you can use the useStore hook to retrieve the store object and interact with the state:
@@ -43,24 +43,24 @@ import React from 'react';
 import { useStore } from '@yourorg/store-provider';
 
 export function Counter() {
-  const { get, set } = useStore<{ count: number }>();
-  const count = get((state) => state.count);
+const { get, set } = useStore<{ count: number }>();
+const count = get((state) => state.count);
 
-  function increment() {
-    set((state) => ({ count: state.count + 1 }));
-  }
+function increment() {
+set((state) => ({ count: state.count + 1 }));
+}
 
-  function decrement() {
-    set((state) => ({ count: state.count - 1 }));
-  }
+function decrement() {
+set((state) => ({ count: state.count - 1 }));
+}
 
-  return (
-    <div>
-      <p>Count: {count}</p>
-      <button onClick={increment}>+</button>
-      <button onClick={decrement}>-</button>
-    </div>
-  );
+return (
+<div>
+<p>Count: {count}</p>
+<button onClick={increment}>+</button>
+<button onClick={decrement}>-</button>
+</div>
+);
 }
 
 API
@@ -75,7 +75,7 @@ Props:
 jsx
 
 <StoreProvider initialState={{ count: 0 }}>
-  ...
+...
 </StoreProvider>
 
 useStore()
@@ -113,10 +113,10 @@ subscribe is a method that takes a key and a listener function, and adds that li
 jsx
 
 function handleChange(newValue) {
-  console.log('The new count is', newValue.count);
+console.log('The new count is', newValue.count);
 }
 
 useEffect(() => {
-  const unsubscribe = subscribe('count', handleChange);
-  return unsubscribe;
+const unsubscribe = subscribe('count', handleChange);
+return unsubscribe;
 }, []);

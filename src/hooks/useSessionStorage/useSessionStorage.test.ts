@@ -7,7 +7,9 @@ describe('useSessionStorage', () => {
   });
 
   it('should return the initial value if sessionStorage is empty', () => {
-    const { result } = renderHook(() => useSessionStorage('test', 'initialValue'));
+    const { result } = renderHook(() =>
+      useSessionStorage('test', 'initialValue'),
+    );
 
     expect(result.current[0]).toBe('initialValue');
   });
@@ -15,13 +17,17 @@ describe('useSessionStorage', () => {
   it('should return the value from sessionStorage if it exists', () => {
     sessionStorage.setItem('test', JSON.stringify('storedValue'));
 
-    const { result } = renderHook(() => useSessionStorage('test', 'initialValue'));
+    const { result } = renderHook(() =>
+      useSessionStorage('test', 'initialValue'),
+    );
 
     expect(result.current[0]).toBe('storedValue');
   });
 
   it('should update the sessionStorage value when the state is updated', () => {
-    const { result } = renderHook(() => useSessionStorage('test', 'initialValue'));
+    const { result } = renderHook(() =>
+      useSessionStorage('test', 'initialValue'),
+    );
 
     expect(sessionStorage.getItem('test')).toBe(JSON.stringify('initialValue'));
 

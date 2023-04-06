@@ -10,9 +10,12 @@ describe('useDebounce', () => {
   it('debounces the value after the delay', async () => {
     jest.useFakeTimers();
 
-    const { result, rerender } = renderHook((props) => useDebounce(props.value, props.delay), {
-      initialProps: { value: 'hello', delay: 500 },
-    });
+    const { result, rerender } = renderHook(
+      props => useDebounce(props.value, props.delay),
+      {
+        initialProps: { value: 'hello', delay: 500 },
+      },
+    );
 
     expect(result.current).toBe('hello');
 

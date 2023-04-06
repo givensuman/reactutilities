@@ -6,7 +6,7 @@ describe('useDeviceOrientation', () => {
     const { result } = renderHook(() => useDeviceOrientation());
     expect(result.current).toMatch(/^(portrait|landscape)$/);
   });
-  
+
   it('should return "portrait" if the window is in portrait mode', () => {
     Object.defineProperty(window, 'matchMedia', {
       writable: true,

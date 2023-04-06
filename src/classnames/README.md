@@ -67,13 +67,11 @@ While this package is not restricted to use in React applications (it has zero d
 
 This package compared almost identically to the `classnames` package in benchmarking (used locally on an i7-6500U).
 
-|Package|Ops (s⁻¹)|Error (%)|
-|---|---|---|
-|`classnames`|5,404,020|±0.97|
-|`@reactutilities/classnames`|5,104,723|±1.12|
-
-
+| Package                      | Ops (s⁻¹) | Error (%) |
+| ---------------------------- | --------- | --------- |
+| `classnames`                 | 5,404,020 | ±0.97     |
+| `@reactutilities/classnames` | 5,104,723 | ±1.12     |
 
 ## Acknowledgements
 
-This design was lifted from previous work by libraries like `classnames` and `clsx`. 
+This design was lifted from previous work by libraries like `classnames` and `clsx`.

@@ -13,9 +13,11 @@ describe('Async', () => {
           await={asyncFn}
           loading={<div>Loading...</div>}
           success={() => <div>{successText}</div>}
-        />
+        />,
       );
-      await waitFor(() => expect(screen.getByText(successText)).toBeInTheDocument);
+      await waitFor(
+        () => expect(screen.getByText(successText)).toBeInTheDocument,
+      );
     });
 
     it('calls the onSuccess callback function', async () => {
@@ -24,9 +26,9 @@ describe('Async', () => {
         <Async
           await={asyncFn}
           loading={<div>Loading...</div>}
-          success={(data) => <div>{data as any}</div>}
+          success={data => <div>{data as any}</div>}
           onSuccess={onSuccess}
-        />
+        />,
       );
       await waitFor(() => expect(onSuccess).toHaveBeenCalled);
     });
@@ -42,11 +44,13 @@ describe('Async', () => {
         <Async
           await={asyncFn}
           loading={<div>Loading...</div>}
-          error={(error) => <div>{error.message}</div>}
+          error={error => <div>{error.message}</div>}
           success={() => null}
-        />
+        />,
       );
-      await waitFor(() => expect(screen.getByText(errorText)).toBeInTheDocument);
+      await waitFor(
+        () => expect(screen.getByText(errorText)).toBeInTheDocument,
+      );
     });
 
     it('calls the onError callback function', async () => {
@@ -55,10 +59,10 @@ describe('Async', () => {
         <Async
           await={asyncFn}
           loading={<div>Loading...</div>}
-          error={(error) => <div>{error.message}</div>}
+          error={error => <div>{error.message}</div>}
           success={() => null}
           onError={onError}
-        />
+        />,
       );
       await waitFor(() => expect(onError).toHaveBeenCalledWith(error));
     });
@@ -73,7 +77,7 @@ describe('Async', () => {
           await={asyncFn}
           loading={() => <div>Loading...</div>}
           success={() => null}
-        />
+        />,
       );
       expect(screen.getByText('Loading...')).toBeInTheDocument;
     });
@@ -86,7 +90,7 @@ describe('Async', () => {
           loading={() => <div>Loading...</div>}
           success={() => null}
           onLoading={onLoading}
-        />
+        />,
       );
       expect(onLoading).toHaveBeenCalled();
     });

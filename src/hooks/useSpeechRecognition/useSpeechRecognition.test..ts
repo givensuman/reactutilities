@@ -1,5 +1,5 @@
-import { renderHook, act } from "@testing-library/react-hooks";
-import useSpeechRecognition from ".";
+import { renderHook, act } from '@testing-library/react-hooks';
+import useSpeechRecognition from '.';
 
 // Mock SpeechRecognition API
 window.SpeechRecognition = jest.fn().mockImplementation(() => {
@@ -10,17 +10,17 @@ window.SpeechRecognition = jest.fn().mockImplementation(() => {
   };
 });
 
-describe("useSpeechRecognition", () => {
-  test("returns initial values", () => {
+describe('useSpeechRecognition', () => {
+  test('returns initial values', () => {
     const { result } = renderHook(() => useSpeechRecognition());
 
     expect(result.current.isListening).toBe(false);
-    expect(result.current.transcript).toBe("");
+    expect(result.current.transcript).toBe('');
     expect(result.current.isError).toBe(false);
-    expect(result.current.error).toBe("");
+    expect(result.current.error).toBe('');
   });
 
-  test("sets isListening to true when startListening is called", () => {
+  test('sets isListening to true when startListening is called', () => {
     const { result } = renderHook(() => useSpeechRecognition());
 
     act(() => {
@@ -30,7 +30,7 @@ describe("useSpeechRecognition", () => {
     expect(result.current.isListening).toBe(true);
   });
 
-  test("sets isListening to false when stopListening is called", () => {
+  test('sets isListening to false when stopListening is called', () => {
     const { result } = renderHook(() => useSpeechRecognition());
 
     act(() => {
@@ -41,13 +41,13 @@ describe("useSpeechRecognition", () => {
     expect(result.current.isListening).toBe(false);
   });
 
-  test("sets transcript when recognition occurs", () => {
+  test('sets transcript when recognition occurs', () => {
     const { result } = renderHook(() => useSpeechRecognition());
 
-    const mockTranscript = "hello world";
+    const mockTranscript = 'hello world';
 
     act(() => {
-      const event = new Event("result");
+      const event = new Event('result');
       // @ts-ignore
       event.results = [{ transcript: mockTranscript }];
       // @ts-ignore
@@ -57,13 +57,13 @@ describe("useSpeechRecognition", () => {
     expect(result.current.transcript).toBe(mockTranscript);
   });
 
-  test("sets isError and errorMessage when recognition errors occur", () => {
+  test('sets isError and errorMessage when recognition errors occur', () => {
     const { result } = renderHook(() => useSpeechRecognition());
 
-    const mockErrorMessage = "An error occurred";
+    const mockErrorMessage = 'An error occurred';
 
     act(() => {
-      const event = new Event("error");
+      const event = new Event('error');
       // @ts-ignore
       event.error = mockErrorMessage;
       // @ts-ignore

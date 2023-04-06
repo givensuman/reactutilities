@@ -28,6 +28,4 @@ module.exports = {
     ],
     "rules": {
     },
-    "src": "./**/*.{ts,js,tsx,jsx}",
-    "ignore": ["node_modules"]
 }

@@ -5,7 +5,7 @@ import { useEffect, useRef } from 'react';
  *
  * @param callback - The function to execute after the timeout has elapsed.
  * @param delay - The amount of time, in milliseconds, to wait before executing the function.
- * 
+ *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
 const useTimeout = (callback: () => void, delay: number): void => {

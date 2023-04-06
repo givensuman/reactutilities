@@ -2,44 +2,52 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import Switch from '.';
 
-describe('Switch', () => {
-  it('should render the correct case', () => {
-    const { getByText } = render(
-      <Switch value="green">
-        <Switch.Case when="red">
-          <div>Red</div>
+describe('Switch component', () => {
+  it('should render the default case if no case matches', () => {
+    const { container } = render(
+      <Switch value="unknown">
+        <Switch.Case when="one">
+          <div>One case</div>
         </Switch.Case>
-        <Switch.Case when="green">
-          <div>Green</div>
-        </Switch.Case>
-        <Switch.Case when="blue">
-          <div>Blue</div>
+        <Switch.Case when="two">
+          <div>Two case</div>
         </Switch.Case>
         <Switch.Default>
-          <div>Default</div>
+          <div>Default case</div>
         </Switch.Default>
-      </Switch>
+      </Switch>,
     );
-    expect(getByText('Green')).toBeInTheDocument();
+    expect(container.innerHTML).toMatch('Default case');
   });
 
-  it('should render the default case when no case matches', () => {
-    const { getByText } = render(
-      <Switch value="orange">
-        <Switch.Case when="red">
-          <div>Red</div>
+  it('should render the matching case', () => {
+    const { container } = render(
+      <Switch value="two">
+        <Switch.Case when="one">
+          <div>One case</div>
         </Switch.Case>
-        <Switch.Case when="green">
-          <div>Green</div>
-        </Switch.Case>
-        <Switch.Case when="blue">
-          <div>Blue</div>
+        <Switch.Case when="two">
+          <div>Two case</div>
         </Switch.Case>
         <Switch.Default>
-          <div>Default</div>
+          <div>Default case</div>
         </Switch.Default>
-      </Switch>
+      </Switch>,
     );
-    expect(getByText('Default')).toBeInTheDocument();
+    expect(container.innerHTML).toMatch('Two case');
+  });
+
+  it('should render nothing when there is no default case and no matching case', () => {
+    const { container } = render(
+      <Switch value="unknown">
+        <Switch.Case when="one">
+          <div>One case</div>
+        </Switch.Case>
+        <Switch.Case when="two">
+          <div>Two case</div>
+        </Switch.Case>
+      </Switch>,
+    );
+    expect(container.innerHTML).toBe('');
   });
 });

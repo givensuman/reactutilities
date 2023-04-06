@@ -10,7 +10,7 @@ To use the css function, first install the package:
 npm install @reactutilities/css
 # or
 yarn add @reactutilities/css
-# or 
+# or
 pnpm add @reactutilities/css
 ```
 

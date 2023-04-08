@@ -1,4 +1,4 @@
-# classnames
+# @reactutilities/classnames 🎨
 
 A lightweight utility function to easily generate class names from a set of conditions, including support for nested arrays and objects.
 

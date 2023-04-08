@@ -1,4 +1,4 @@
-# css
+# @reactutilities/css 🌈
 
 A template literal tag function for serializing CSS styles. Uses the `serializeStyles` function from `@emotion/serialize`.
 

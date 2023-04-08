@@ -1,4 +1,4 @@
-# @reactutilities/store 📦
+# @reactutilities/stores 🛍️
 
 An efficient and intuitive way to manage state in your React applications.
 

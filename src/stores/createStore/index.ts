@@ -26,11 +26,13 @@ function createStore<T extends object>(initialState: T): Store<T> {
   const listeners = new Set<Listener<T>>();
 
   function set(newState: Partial<T> | ((prevState: T) => Partial<T>)) {
-    state =
-      typeof newState === 'function'
-        ? { ...state, ...newState(state) }
-        : { ...state, ...newState };
-    listeners.forEach(listener => listener(state));
+    const nextState =
+      typeof newState === 'function' ? newState(state) : newState;
+
+    if (nextState !== state) {
+      state = { ...state, ...nextState };
+      listeners.forEach(listener => listener(state));
+    }
   }
 
   function get<R>(callback: (state: T) => R): R {

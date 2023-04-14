@@ -1,54 +1,91 @@
-import { renderHook } from '@testing-library/react-hooks';
+import { renderHook, act } from '@testing-library/react-hooks';
 import useAsync from '.';
 
 describe('useAsync', () => {
-  test('should return the correct initial state', () => {
-    const asyncFunction = jest.fn();
-    const { result } = renderHook(() => useAsync(asyncFunction));
-
-    expect(result.current.data).toBe(null);
-    expect(result.current.isLoading).toBe(false);
-    expect(result.current.isError).toBe(false);
-    expect(result.current.error).toBe(null);
+  beforeEach(() => {
+    jest.clearAllMocks();
   });
 
-  test('should set isLoading to true when asyncFunction is executing', async () => {
-    const asyncFunction = jest.fn(
-      () => new Promise(resolve => setTimeout(resolve, 100)),
-    );
-    const { result, waitForNextUpdate } = renderHook(() =>
-      useAsync(asyncFunction),
-    );
-
-    expect(result.current.isLoading).toBe(true);
-
-    await waitForNextUpdate();
-
-    expect(result.current.isLoading).toBe(false);
+  it('should return initial state', () => {
+    const { result } = renderHook(() => useAsync(async () => null));
+    expect(result.current).toEqual({
+      data: null,
+      isLoading: true,
+      isError: false,
+      error: null,
+    });
   });
 
-  test('should set data when asyncFunction resolves', async () => {
-    const fakeData = { id: 1, title: 'Fake Data' };
-    const asyncFunction = jest.fn(() => Promise.resolve(fakeData));
+  it('should fetch data successfully', async () => {
     const { result, waitForNextUpdate } = renderHook(() =>
-      useAsync(asyncFunction),
+      useAsync(async () => {
+        return 'data';
+      }),
     );
 
     await waitForNextUpdate();
 
-    expect(result.current.data).toBe(fakeData);
+    expect(result.current).toEqual({
+      data: 'data',
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
   });
 
-  test('should set isError to true when asyncFunction rejects', async () => {
-    const fakeError = new Error('Fake Error');
-    const asyncFunction = jest.fn(() => Promise.reject(fakeError));
+  it('should handle errors', async () => {
     const { result, waitForNextUpdate } = renderHook(() =>
-      useAsync(asyncFunction),
+      useAsync(async () => {
+        throw new Error('Test Error');
+      }),
     );
 
     await waitForNextUpdate();
 
-    expect(result.current.isError).toBe(true);
-    expect(result.current.error).toBe(fakeError);
+    expect(result.current).toEqual({
+      data: null,
+      isLoading: false,
+      isError: true,
+      error: new Error('Test Error'),
+    });
+  });
+
+  it('should re-fetch when dependencies change', async () => {
+    const fetchFn = jest.fn();
+    fetchFn.mockResolvedValue({ id: 2 });
+
+    const { result, rerender, waitForNextUpdate } = renderHook(
+      ({ id }) => useAsync(() => fetchFn(id), [id]),
+      { initialProps: { id: 1 } }
+    );
+
+    expect(result.current).toEqual({
+      data: null,
+      isLoading: true,
+      isError: false,
+      error: null,
+    });
+
+    await waitForNextUpdate();
+
+    expect(result.current).toEqual({
+      data: { id: 2 },
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
+
+    act(() => {
+      rerender({ id: 2 });
+    });
+
+    await waitForNextUpdate();
+
+    expect(result.current).toEqual({
+      data: { id: 2 },
+      isLoading: false,
+      isError: false,
+      error: null,
+    });
   });
 });

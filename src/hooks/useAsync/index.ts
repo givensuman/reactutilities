@@ -11,28 +11,31 @@ import { useEffect, useState } from 'react';
  */
 function useAsync<T>(
   asyncFunction: () => Promise<T>,
-  deps: any[] = [],
+  deps: unknown[] = [],
 ): AsyncState<T> {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
 
+  const asyncExecution = async () => {
+    await asyncFunction()
+    .then((data: T) => {
+      setData(data);
+    })
+    .catch((error: Error) => {
+      setError(error);
+      setIsError(true);
+    })
+    .finally(() => {
+      setIsLoading(false);
+    });
+  }
+
   useEffect(() => {
     setIsLoading(true);
     setIsError(false);
-
-    asyncFunction()
-      .then((data: T) => {
-        setData(data);
-      })
-      .catch((error: Error) => {
-        setError(error);
-        setIsError(true);
-      })
-      .finally(() => {
-        setIsLoading(false);
-      });
+    asyncExecution();
   }, [...deps]);
 
   return { data, isLoading, isError, error };

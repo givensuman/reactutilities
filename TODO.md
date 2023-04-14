@@ -1,5 +1,6 @@
 Stores failing tests
 Hooks missing tests
+    useCopyToClipboard
 
 Go over all READMEs
 Test everything in /demo

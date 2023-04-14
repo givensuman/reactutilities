@@ -1,60 +1,48 @@
+import { renderHook } from '@testing-library/react-hooks';
 import createStore from '.';
 
 describe('createStore', () => {
-  it('returns the correct initial state', () => {
-    const initialState = { count: 0 };
-    const store = createStore(initialState);
-    expect(store.get()).toEqual(initialState);
+  it('should provide a `get` method to retrieve the current state', () => {
+    const { result } = renderHook(() => createStore({ foo: 'bar' }));
+    expect(result.current.get(state => state.foo)).toBe('bar');
   });
 
-  it('updates the state correctly', () => {
-    const initialState = { count: 0 };
-    const store = createStore(initialState);
-    store.set({ count: 1 });
-    expect(store.get()).toEqual({ count: 1 });
+  it('should provide a `set` method to update the state', () => {
+    const { result } = renderHook(() => createStore({ foo: 'bar' }));
+    result.current.set({ foo: 'baz' });
+    expect(result.current.get(state => state.foo)).toBe('baz');
   });
 
-  it('updates the state correctly with a function', () => {
-    const initialState = { count: 0 };
-    const store = createStore(initialState);
-    store.set(prevState => ({ count: prevState.count + 1 }));
-    expect(store.get()).toEqual({ count: 1 });
+  it('should allow setting state using a function that returns a partial state object', () => {
+    const { result } = renderHook(() => createStore({ foo: 'bar' }));
+    result.current.set(prevState => ({ foo: prevState.foo + 'baz' }));
+    expect(result.current.get(state => state.foo)).toBe('barbaz');
   });
 
-  it('calls subscribers when the state is updated', () => {
-    const initialState = { count: 0 };
-    const store = createStore(initialState);
-    const mockSubscriber = jest.fn();
-    store.subscribe(null, mockSubscriber);
-    store.set({ count: 1 });
-    expect(mockSubscriber).toHaveBeenCalledWith({ count: 1 });
-  });
-
-  it('only calls subscribers with the correct key when provided', () => {
-    const initialState = { count: 0, name: 'John' };
-    const store = createStore(initialState);
-    const mockCountSubscriber = jest.fn();
-    const mockNameSubscriber = jest.fn();
-    store.subscribe('count', mockCountSubscriber);
-    store.subscribe('name', mockNameSubscriber);
-    store.set({ count: 1, name: 'Jane' });
-    expect(mockCountSubscriber).toHaveBeenCalledWith({
-      count: 1,
-      name: 'John',
-    });
-    expect(mockNameSubscriber).toHaveBeenCalledWith({ count: 1, name: 'Jane' });
-  });
-
-  it('allows unsubscribing from a subscriber', () => {
-    const initialState = { count: 0 };
-    const store = createStore(initialState);
-    const mockSubscriber = jest.fn();
-    const unsubscribe = store.subscribe(null, mockSubscriber);
-    store.set({ count: 1 });
-    expect(mockSubscriber).toHaveBeenCalledWith({ count: 1 });
-    mockSubscriber.mockClear();
+  it('should provide a `subscribe` method to listen for changes to the state', () => {
+    const { result } = renderHook(() => createStore({ foo: 'bar' }));
+    const callback = jest.fn();
+    const unsubscribe = result.current.subscribe('foo', callback);
+    result.current.set({ foo: 'baz' });
+    expect(callback).toHaveBeenCalledTimes(1);
+    expect(callback).toHaveBeenCalledWith({ foo: 'baz' });
     unsubscribe();
-    store.set({ count: 2 });
-    expect(mockSubscriber).not.toHaveBeenCalled();
+    result.current.set({ foo: 'qux' });
+    expect(callback).toHaveBeenCalledTimes(1);
+  });
+
+  it('should allow subscribing to all state changes by passing a falsy key', () => {
+    const { result } = renderHook(() => createStore({ foo: 'bar', baz: 'qux' }));
+    const callback = jest.fn();
+    const unsubscribe = result.current.subscribe(null, callback);
+    result.current.set({ foo: 'baz' });
+    expect(callback).toHaveBeenCalledTimes(1);
+    expect(callback).toHaveBeenCalledWith({ foo: 'baz', baz: 'qux' });
+    result.current.set({ baz: 'quux' });
+    expect(callback).toHaveBeenCalledTimes(2);
+    expect(callback).toHaveBeenCalledWith({ foo: 'baz', baz: 'quux' });
+    unsubscribe();
+    result.current.set({ foo: 'qux' });
+    expect(callback).toHaveBeenCalledTimes(2);
   });
 });

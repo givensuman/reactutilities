@@ -6,7 +6,7 @@ import { useState } from 'react';
  * and a function that can be called to copy text to the clipboard.
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
-function useClipboard(): [boolean, (text: string) => void] {
+function useCopyToClipboard(): [boolean, (text: string) => void] {
   const [isCopied, setIsCopied] = useState(false);
 
   const copyToClipboard = (text: string) => {
@@ -16,4 +16,4 @@ function useClipboard(): [boolean, (text: string) => void] {
   return [isCopied, copyToClipboard];
 }
 
-export default useClipboard;
+export default useCopyToClipboard;

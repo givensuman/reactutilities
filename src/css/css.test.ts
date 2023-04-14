@@ -37,7 +37,7 @@ describe('css function', () => {
       }
     `;
     expect(style).toEqual(
-      'color:blue;font-size:16px;&:hover{color:red;& .nested{color:green;}}',
+      'color:blue;font-size:16px;&:hover{color:red;&.nested{color:green;}}',
     );
   });
 

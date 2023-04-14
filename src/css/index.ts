@@ -22,7 +22,9 @@ import { Interpolation, serializeStyles } from '@emotion/serialize';
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
 function css(...args: (TemplateStringsArray | Interpolation<unknown>)[]) {
-  return serializeStyles(args);
+  return serializeStyles(args)
+    .styles
+    .replace(/\s/g, '');
 }
 
 export default css;

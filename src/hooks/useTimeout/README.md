@@ -1,6 +1,7 @@
 # useTimeout
 
 The `useTimeout` hook is a React hook that allows you to execute a function after a specified amount of time has passed. It provides an easy way to delay the execution of a function.
+
 ## Usage
 
 To use the `useTimeout` hook, simply import it and call it from within a functional component:

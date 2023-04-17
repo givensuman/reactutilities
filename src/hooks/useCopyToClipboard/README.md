@@ -22,3 +22,12 @@ function MyComponent() {
   );
 }
 ```
+
+## API
+
+The `useCopyToClipboard` hook returns a tuple containing three items:
+
+|Index|Type|Description|
+|---|---|---|
+|0|`boolean`|A boolean representing whether the copy operation was successful.|
+|1|`(text: string) => void`|A function that can be called to copy text to the clipboard.|

@@ -51,4 +51,4 @@ The `useKeyPress` hook accepts two arguments:
 |targetKey|`string \| number`|The key to detect. Can be a string or a number.|
 |onKeyPress|`(event?: KeyboardEvent) => void`|Optional callback that runs when targetKey is pressed.|
 
-The useKeyPress hook returns a boolean indicating whether the target key was pressed.
+The `useKeyPress` hook returns a boolean indicating whether the target key was pressed.

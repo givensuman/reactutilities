@@ -30,18 +30,6 @@ function MyComponent() {
 
 In this example, `usePrevious` is called with count, which is the current value of a state variable. The prevCount variable is then used to store the previous value of count, which is compared to the current value in an useEffect hook.
 
-## API
-
-The `usePrevious` hook takes one parameter:
-
-|Name|Type|Description|
-|---|---|---|
-|value|`T`|The current value of a variable or state.|
-
-The usePrevious hook returns the previous value of the given variable or state. If there is no previous value, undefined is returned.
-
-## Example
-
 ```tsx
 import { usePrevious } from './usePrevious';
 
@@ -65,3 +53,13 @@ function MyComponent() {
 ```
 
 In this example, `usePrevious` is called with name, which is the current value of a state variable. The prevName variable is then used to store the previous value of name, which is compared to the current value in an useEffect hook. If the value has changed, a message is logged to the console.
+
+## API
+
+The `usePrevious` hook takes one parameter:
+
+|Name|Type|Description|
+|---|---|---|
+|value|`T`|The current value of a variable or state.|
+
+The `usePrevious` hook returns the previous value of the given variable or state. If there is no previous value, undefined is returned.

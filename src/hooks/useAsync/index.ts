@@ -8,7 +8,11 @@ import { useEffect, useState } from 'react';
  * @param {() => Promise<T>} asyncFunction The asynchronous function to execute.
  * @param {any[]} [deps=[]] An optional array of dependencies that the hook should watch for changes.
  * 
- * @returns {AsyncState<T>} An object containing the state of the asynchronous operation.
+ * @returns {AsyncState<T>} An object containing the state of the asynchronous operation with the following properties:
+ *  - `data`: The return of the asynchronous function.
+ *  - `isLoading`: `true` is the asynchronous function is still being awaited, `false` if finished.
+ *  - `isError`: `true` if the asynchronous function threw an error, `false` if otherwise.
+ *  - `error`: The error message thrown in the event of an error.
  * 
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */

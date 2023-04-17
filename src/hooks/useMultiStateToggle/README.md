@@ -39,7 +39,7 @@ The `useMultiStateToggle` hook takes one parameter:
 |---|---|---|
 |initialState|`{ [key: string]: boolean }`|An object where each key represents a state name and the value represents whether the state is currently active or not.|
 
-The `useMultiStateToggle` hook returns an array containing three items:
+The `useMultiStateToggle` hook returns a tuple containing three items:
 
 |Index|Type|Description|
 |---|---|---|

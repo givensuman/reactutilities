@@ -58,15 +58,18 @@ In this example, the `useLocalStorage `hook is called with a key string and an i
 
 ## API
 
-The `useLocalStorage` hook has the following signature:
+The `useLocalStorage` hook takes two parameters:
 
-```tsx
-function useLocalStorage<T>(
-  key: string,
-  initialValue: T,
-): [T, (value: T) => void]
-```
+|Name|Type|Description|
+|---|---|---|
+|key|`string`|The key to use when storing the value in `localStorage`.|
+|initialValue|`T`|The initial value to use when the key is not found in `localStorage`.|
 
-Where key is the key to use when storing the value in localStorage, and initialValue is the initial value to use when the key is not found in localStorage. The hook returns a tuple containing the current value and a function to update it.
+The `useLocalStorage` hook returns a tuple with the following items:
+
+|Index|Type|Description|
+|---|---|---|
+|0|`T`|The current value being stored.|
+|1|`(value: T) => void`|A function to update the value being stored.|
 
 Note that the value you pass to `useLocalStorage` will be stringified and stored in localStorage as a string. When you retrieve the value with `useLocalStorage`, it will be parsed back into its original type.

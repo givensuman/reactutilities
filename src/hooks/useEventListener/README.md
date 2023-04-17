@@ -69,13 +69,14 @@ function MyComponent() {
 }
 ```
 
-In this example, useEventListener is called with an array of event types and a single event handler. The event listener is added to the window object for both the "keydown" and "keyup" events.
+In this example, `useEventListener` is called with an array of event types and a single event handler. The event listener is added to the window object for both the "keydown" and "keyup" events.
 
 ## API
 
 The `useEventListener` hook accepts the following parameters:
+
 |Name	|Type	|Description|
 |---|---|---|
-|eventType	|`EventType \| EventType[]`	|The event type(s) to listen for.|
-|handler|	`EventListenerOrEventListenerObject`	|The event handler function.|
-|target	|`EventTarget`|	The target element to attach the listener to. Defaults to `window`.|
+|eventType|`EventType \| EventType[]`|The event type(s) to listen for.|
+|handler|	`EventListenerOrEventListenerObject`|The event handler function.|
+|target|`EventTarget`|The target element to attach the listener to. Defaults to `window`.|

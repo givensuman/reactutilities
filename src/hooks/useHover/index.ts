@@ -1,9 +1,15 @@
 import { useState, useEffect } from 'react';
 
+interface HoverOptions<T extends HTMLElement> {
+  onMouseOver?: (event?: MouseEvent, node?: T) => void;
+  onMouseOut?: (event?: MouseEvent, node?: T) => void;
+}
+
 /**
  * Detects whether the mouse pointer is hovering over a specified element or not.
  * 
  * @param {React.RefObject<T>} ref A reference to the DOM element to monitor for hover state changes.
+ * @param {HoverOptions<T>} options An optional object containing callbacks for `onMouseOver` and `onMouseOut`.
  * 
  * @returns {boolean} A boolean value representing whether the mouse is hovering over the element or not.
  *
@@ -11,11 +17,22 @@ import { useState, useEffect } from 'react';
  */
 function useHover<T extends HTMLElement = HTMLElement>(
   ref: React.RefObject<T>,
+  options: HoverOptions<T> = {}
 ): boolean {
   const [isHovering, setIsHovering] = useState(false);
 
-  const handleMouseOver = () => setIsHovering(true);
-  const handleMouseOut = () => setIsHovering(false);
+  const handleMouseOver = (event: MouseEvent) => {
+    setIsHovering(true);
+    if (options.onMouseOver && ref.current) {
+      options.onMouseOver(event, ref.current);
+    }
+  };
+  const handleMouseOut = (event: MouseEvent) => {
+    setIsHovering(false);
+    if (options.onMouseOut && ref.current) {
+      options.onMouseOut(event, ref.current);
+    }
+  };
 
   useEffect(() => {
     const node = ref.current;
@@ -28,7 +45,7 @@ function useHover<T extends HTMLElement = HTMLElement>(
         node.removeEventListener('mouseout', handleMouseOut);
       };
     }
-  }, [ref]);
+  }, [ref, options.onMouseOver, options.onMouseOut]);
 
   return isHovering;
 }

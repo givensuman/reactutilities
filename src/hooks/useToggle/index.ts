@@ -3,14 +3,13 @@ import { useState, useCallback } from 'react';
 /**
  * Provides a boolean toggle state, along with functions to toggle the state and set the state to a specific value.
  *
- * @param {boolean} initialValue The initial boolean value for the toggle state. Defaults to `false`.
+ * @param {boolean} [initialValue = false] The initial boolean value for the toggle state. Defaults to `false`.
  * 
  * @returns {[
  *    boolean,
  *    () => void,
  *    (newValue: boolean) => void
- * ]} A tuple containing the current boolean value of the toggle state, a function to toggle
- * the state between `true` and `false`, and a function to set the state to a specific boolean value.
+ * ]} A tuple containing the current boolean value of the toggle state, a function to toggle the state between `true` and `false`, and a function to set the state to a specific boolean value.
  *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */

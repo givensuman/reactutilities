@@ -22,7 +22,7 @@ function useSessionStorage<T>(
       try {
         return JSON.parse(storedValue);
       } catch (error) {
-        return storedValue as any;
+        return storedValue as T;
       }
     }
     return initialValue;

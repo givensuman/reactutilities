@@ -56,6 +56,13 @@ In this example, the `useAsync` hook is called with a function that fetches data
 
 ## API
 
+The `useAsync` hook accepts the following parameters:
+
+|Name|Type|Description|
+|---|---|---|
+|asyncFunction|`() => Promise<T>`|The asynchronous function to execute.|
+|deps|`any[]`|An optional array of dependencies that the hook should watch for changes.|
+
 The `useAsync` hook returns an object with the following properties:
 
 |Name|Type|Description|

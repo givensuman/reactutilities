@@ -14,7 +14,7 @@ type MediaQueryObject = {
  * 
  * @param {string | MediaQueryObject} query The media query to match. Can be a string or an object containing `minWidth`, `maxWidth`, `minHeight`, and/or `maxHeight` properties.
  * 
- * @returns {boolean} `true` if the viewport matches the media query, `false` otherwise.
+ * @returns {boolean} A boolean that's `true` if the viewport matches the media query, and `false` otherwise.
  * 
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */

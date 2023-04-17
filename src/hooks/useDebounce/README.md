@@ -59,7 +59,7 @@ function MyComponent() {
 }
 ```
 
-In this example, `useDebounce` is called with an asynchronous function that fetches search results from an API and updates the results state. The `debouncedSearch` function is then called with the search input value, which triggers the debouncing of the function. This ensures that the API is not called too frequently while the user is typing in the search input.
+In this example, `useDebounce` is called with an asynchronous function that fetches search results from an API and updates the results state. The debouncedSearch function is then called with the search input value, which triggers the debouncing of the function. This ensures that the API is not called too frequently while the user is typing in the search input.
 
 ## API
 

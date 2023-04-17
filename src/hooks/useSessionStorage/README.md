@@ -33,6 +33,11 @@ The `useSessionStorage` hook takes two parameters:
 |key|`string`|The key to use for storing and retrieving data from the session storage.|
 |initialValue|`T`|The initial value to use if no value is currently stored in session storage for the given key.|
 
-The `useSessionStorage` hook returns a tuple containing the current value and a function to update the value in session storage. The function takes a single parameter, the new value to be stored in session storage.
+The `useLocalStorage` hook returns a tuple with the following items:
 
-Note that the values stored in session storage are always strings. Therefore, when using useSessionStorage, it's recommended to use JSON.stringify and JSON.parse to store and retrieve non-string values.
+|Index|Type|Description|
+|---|---|---|
+|0|`T`|The current value being stored.|
+|1|`(value: T) => void`|A function to update the value being stored.|
+
+Note that the value you pass to `useSessionStorage` will be stringified and stored in localStorage as a string. When you retrieve the value with `useSessionStorage`, it will be parsed back into its original type.

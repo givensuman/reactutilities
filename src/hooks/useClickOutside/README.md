@@ -22,7 +22,13 @@ function MyComponent() {
   return <div ref={ref}>My Component</div>;
 }
 ```
-
-Note that the ref should be passed as a generic type to ensure that it points to the correct type of HTML element.
-
 The handler function will be called with a MouseEvent or TouchEvent object, depending on how the click was detected.
+
+## API
+
+The `useClickOutside` hook accepts the following parameters:
+
+|Name|Type|Description|
+|---|---|---|
+|ref|`React.RefObject<T>`|A React ref pointing to the element that the click should be detected outside of.|
+|event|`MouseEvent | TouchEvent`|A function that will be called when a click is detected outside of the element.|

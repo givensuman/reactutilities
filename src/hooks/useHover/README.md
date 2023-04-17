@@ -1,6 +1,6 @@
 # useHover
 
-The `useHover` hook is a simple way to detect whether the mouse pointer is hovering over a specified element or not. It simplifies the process of monitoring hover state changes in React applications by providing a consistent API that you can use to track hover events.
+The `useHover` hook is a simple way to detect whether the mouse pointer is hovering over a specified element or not. It simplifies the process of handling hover events in React applications by providing a consistent API that you can use to detect hover state changes.
 
 ## Usage
 
@@ -11,30 +11,26 @@ import { useHover } from '@reactutilities/hooks';
 
 function MyComponent() {
   const ref = useRef(null);
-  const isHovering = useHover(ref);
+  const isHovering = useHover(ref, {
+    onMouseOver: () => {
+      console.log('Mouse over detected!');
+    },
+    onMouseOut: () => {
+      console.log('Mouse out detected!');
+    },
+  });
 
   return (
     <div ref={ref}>
-      {isHovering ? 'Hovering!' : 'Not hovering.'}
+      {isHovering ? 'Mouse is hovering over the element!' : 'Mouse is not hovering over the element.'}
     </div>
   );
 }
 ```
 
-In this example, `useHover` is called with a ref to the element we want to monitor for hover events. The isHovering variable is then used to conditionally render the text "Hovering!" or "Not hovering."
+In this example, `useHover` is called with a ref to the element that we want to monitor for hover state changes. The onMouseOver and onMouseOut callback functions are passed in as an optional options object. The isHovering variable is then used to conditionally render a message to the user.
 
-## API
-
-The `useHover` requires a ref to track the hover state of:
-|Name|Type|Description|
-|---|---|---|
-|ref|`React.RefObject<T>`|A reference to the DOM element to monitor for hover state changes.|
-
-The `useHover` hook returns a boolean value representing whether the mouse is currently hovering over the specified element or not.
-
-## Example
-
-Here's an example of how to use useHover to change the background color of an element when the mouse is hovering over it:
+You can also use `useHover` without passing any callback functions:
 
 ```tsx
 import { useHover } from '@reactutilities/hooks';
@@ -43,14 +39,30 @@ function MyComponent() {
   const ref = useRef(null);
   const isHovering = useHover(ref);
 
-  const backgroundColor = isHovering ? 'blue' : 'white';
-
   return (
-    <div ref={ref} style={{ backgroundColor }}>
-      Hover over me!
+    <div ref={ref}>
+      {isHovering ? 'Mouse is hovering over the element!' : 'Mouse is not hovering over the element.'}
     </div>
   );
 }
 ```
 
-In this example, we use `useHover` to detect when the mouse is hovering over the element referenced by ref. We then set the backgroundColor of the element to blue when the mouse is hovering over it and white otherwise.
+In this example, `useHover` is called with only the ref to the element that we want to monitor for hover state changes. No callback functions are passed in, but the isHovering variable is still used to conditionally render a message to the user.
+
+## API
+
+The `useHover` hook accepts two arguments:
+
+|Name|Type|Description|
+|---|---|---|
+|ref|`React.RefObject<T>`|A reference to the DOM element to monitor for hover state changes.|
+|options|`HoverOptions<T>`|An optional object containing callbacks for onMouseOver and onMouseOut.|
+
+The `HoverOptions` interface has two optional properties:
+
+|Name|Type|Description|
+|---|---|---|
+|onMouseOver|`(event?: MouseEvent, node?: T) => void`|A callback function that runs when the mouse pointer enters the monitored element. The event parameter is the mouseover event that triggered the callback, and the node parameter is the DOM node being monitored.|
+|onMouseOut|`(event?: MouseEvent, node?: T) => void`|A callback function that runs when the mouse pointer leaves the monitored element. The event parameter is the mouseout event that triggered the callback, and the node parameter is the DOM node being monitored.|
+
+The `useHover` hook returns a boolean indicating whether the mouse pointer is currently hovering over the monitored element.

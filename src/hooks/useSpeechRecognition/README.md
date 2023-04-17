@@ -53,4 +53,6 @@ The `useSpeechRecognition` hook returns an object with the following properties:
 |startListening|`() => void`|A function to start the recognition process.|
 |stopListening|`() => void`|A function to stop the recognition process.|
 
-The `useSpeechRecognition` hook uses the SpeechRecognition API which may not be supported by all browsers. Additionally, this hook cannot be used in server-side rendering (SSR).
+## Browser Compatibility
+
+This hook uses the SpeechRecognition API which may not be supported by all browsers. Additionally, this hook cannot be used in server-side rendering (SSR).

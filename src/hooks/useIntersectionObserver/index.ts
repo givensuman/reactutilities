@@ -16,9 +16,15 @@ interface IntersectionObserverResult {
 /**
  * Uses the Intersection Observer API to detect when an element is intersecting with the viewport.
  *
- * @param ref - A ref to the element to monitor for intersection events.
- * @param options - Optional configuration options for the Intersection Observer.
- * @returns An object with information about the intersection, including
+ * @param {React.RefObject<Element>} ref A ref to the element to monitor for intersection events.
+ * @param {IntersectionObserverOptions} options Optional configuration options for the Intersection Observer.
+ * 
+ * @returns {{
+ *    isIntersecting: entry.isIntersecting,
+ *    intersectionRatio: entry.intersectionRatio,
+ *    intersectionRect: entry.intersectionRect,
+ *    boundingClientRect: entry.boundingClientRect,
+ * }} An object with information about the intersection, including
  * `isIntersecting` (a boolean indicating whether the element is currently intersecting
  * with the viewport), `intersectionRatio` (the ratio of the element's intersection with
  * the viewport), `intersectionRect` (the element's intersection rectangle), and

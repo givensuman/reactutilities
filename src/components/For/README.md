@@ -20,16 +20,17 @@ function App() {
 
 ## API
 
-The For component accepts the following props:
-|Name |Type |Description|
+The `For` component accepts the following props:
+
+|Name|Type|Description|
 |---|---|---|
-|each |`T[]` |A required array of items to render.|
-|fallback |`React.ReactNode \| null` |An optional React node to render if the array is empty.|
-|children |`(item: T, index: number) => JSX.Element` |A required function that accepts each item in the array and its index as arguments and returns a JSX element to render.|
+|each|`T[]`|A required array of items to render.|
+|fallback |`React.ReactNode \| null`|An optional React node to render if the array is empty.|
+|children|`(item: T, index: number) => JSX.Element`|A required function that accepts each item in the array and its index as arguments and returns a JSX element to render.|
 
 ## Example
 
-Here's an example that demonstrates how to use the For component to render a list of blog posts:
+Here's an example that demonstrates how to use the `For` component to render a list of blog posts:
 
 ```tsx
 import { For } from '@reactutilities/components';

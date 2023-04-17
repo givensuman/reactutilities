@@ -20,9 +20,9 @@ function App() {
 
 There's only one built-in prop:
 
-| Name      | Type                                                                          | Description                                                          |
-| --------- | ----------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| component | `React.ComponentType<T> \| React.ElementType \| keyof JSX.IntrinsicElements` | The component or HTML element to render. Defaults to React.Fragment. |
+|Name|Type|Description|
+|---|---|---|
+|component|`React.ComponentType<T>\|React.ElementType\|keyofJSX.IntrinsicElements`|ThecomponentorHTMLelementtorender.DefaultstoReact.Fragment.|
 
 Any other props passed to `Dynamic` will be forwarded to the rendered component. This allows you to pass custom props to the component you are rendering.
 

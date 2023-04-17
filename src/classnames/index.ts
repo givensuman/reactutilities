@@ -9,9 +9,10 @@ type ClassValue =
   | Iterable<ClassValue>;
 
 /**
- * Returns a string of space-separated class names generated from the given arguments. Supports nested arrays and objects.
+ * Generates a string of space-separated class names generated from the given arguments. Supports nested arrays and objects.
  *
  * @param {...ClassValue} args The values to generate class names from. Can be strings, arrays of strings, or objects with boolean values.
+ * 
  * @returns {string} A string of space-separated class names.
  *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.

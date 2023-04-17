@@ -27,10 +27,11 @@ This will render:
 ## API
 
 The `Repeat` component accepts the following props:
-|Name |Type |Description|
+
+|Name|Type|Description|
 |---|---|---|
-|times |`number`|A required number that specifies the number of times to repeat the child elements.|
-|children |`React.ReactNode` |A required set of valid React nodes to be repeated.|
+|times|`number`|A required number that specifies the number of times to repeat the child elements.|
+|children|`React.ReactNode`|A required set of valid React nodes to be repeated.|
 
 ## Example
 
@@ -57,4 +58,4 @@ function Rating({ rating }: { rating: number }) {
 }
 ```
 
-In this example, the Repeat component is used to render a series of StarIcon components based on the given rating prop. If the rating is greater than 5, only 5 stars will be displayed. If the rating is less than 0, no stars will be displayed. Empty stars are displayed if there are fewer than 5 filled stars.
+In this example, the `Repeat` component is used to render a series of StarIcon components based on the given rating prop. If the rating is greater than 5, only 5 stars will be displayed. If the rating is less than 0, no stars will be displayed. Empty stars are displayed if there are fewer than 5 filled stars.

@@ -3,7 +3,8 @@ import { Interpolation, serializeStyles } from '@emotion/serialize';
 /**
  * A template literal tag function for serializing CSS styles.
  *
- * @param args - The template literal strings and interpolated values
+ * @param {(TemplateStringsArray | Interpolation<unknown>)[]} args The template literal strings and interpolated values
+ * 
  * @returns A serialized CSS string
  *
  * @example

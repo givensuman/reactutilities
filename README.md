@@ -12,13 +12,13 @@ This is a monorepo for the packages developed as part of the `@reactutilities` N
 
 ## Packages
 
-| Package | Description |
-| --- | --- |
-| `@reactutilities/stores` | Ways to manage state in your React applications |
-| `@reactutilities/hooks` | A collection of React hooks for common and not-so-common use cases alike |
-| `@reactutilities/components` | Components for streamlining control flow and logic in your React component's JSX |
-| `@reactutilities/classnames` | A lightweight utility function to easily generate class names from a set of conditions, including support for nested arrays and objects |
-| `@reactutilities/css` | A template literal tag function for serializing CSS styles |
+|Package|Description|
+|---|---|
+|`@reactutilities/stores`|Ways to manage state in your React applications|
+|`@reactutilities/hooks`|A collection of React hooks for common and not-so-common use cases alike|
+|`@reactutilities/components`| Components for streamlining control flow and logic in your React component's JSX|
+|`@reactutilities/classnames`|A lightweight utility function to easily generate class names from a set of conditions, including support for nested arrays and objects|
+|`@reactutilities/css`|A template literal tag function for serializing CSS styles|
 
 ## Contributing
 
@@ -26,4 +26,4 @@ Contributions are welcome and encouraged! Please open an issue or submit a pull 
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+All packages are released under the [MIT](https://mit-license.org/) license.

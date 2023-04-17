@@ -4,7 +4,7 @@ A template literal tag function for serializing CSS styles. Uses the `serializeS
 
 ## Usage
 
-To use the css function, first install the package:
+To use the `css` function, first install the package:
 
 ```bash
 npm install @reactutilities/css
@@ -39,4 +39,4 @@ This package is based on the serializeStyles function from the Emotion library. 
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+Released under the [MIT](https://mit-license.org/) license.

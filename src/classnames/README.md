@@ -78,4 +78,4 @@ This design was lifted from previous work by libraries like `classnames` and `cl
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+Released under the [MIT](https://mit-license.org/) license.

@@ -31,12 +31,12 @@ This will render Loading... if `isLoading` is truthy, and the content if `isLoad
 
 The `Show` component accepts the following props:
 
-| Name     | Type                                                | Description                                                                                                                                                                                         |
-| -------- | --------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| when     | `T \| undefined \| null \| boolean`                 | A required value to check against for truthiness.                                                                                                                                                   |
-| unless   | `K \| undefined \| null \|boolean`                  | An optional value to check against for falsiness. Supercedes `when` condition if truthy.                                                                                                            |
-| fallback | `React.ReactNode \| null`                           | An optional fallback element to render if when is falsy.                                                                                                                                            |
-| children | `React.ReactNode \| ((item: T) => React.ReactNode)` | A required set of valid React nodes to be rendered if when is truthy, or a function that returns valid React nodes when when is truthy. The value of when is passed as an argument to the function. |
+|Name|Type|Description|
+|---|---|---|
+|when|`T\|undefined\|null\|boolean`|A required value to check against for truthiness.|
+|unless|`K \| undefined \| null \|boolean`|An optional value to check against for falsiness. Supercedes `when` condition if truthy.|
+|fallback|`React.ReactNode \| null`| An optional fallback element to render if when is falsy.|
+|children|`React.ReactNode \| ((item: T) => React.ReactNode)`|A required set of valid React nodes to be rendered if when is truthy, or a function that returns valid React nodes when when is truthy. The value of when is passed as an argument to the function.|
 
 ## Example
 

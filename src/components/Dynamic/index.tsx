@@ -9,7 +9,9 @@ type DynamicProps<T = {}> = {
  * or HTML element and pass props through to it.
  *
  * @template T - The props type for the component.
+ * 
  * @param {React.ComponentType<T>|React.ElementType|keyof JSX.IntrinsicElements} props.component The component or HTML element to render.
+ * 
  * @returns {JSX.Element} The rendered component or HTML element.
  *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.

@@ -32,4 +32,4 @@ Many of these components were directly inspired by the "Control Flow" components
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+Released under the [MIT](https://mit-license.org/) license.

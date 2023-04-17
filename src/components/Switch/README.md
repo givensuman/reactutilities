@@ -37,14 +37,14 @@ It's worth noting that the `Switch` component filters children to detect the cor
 
 The `Switch` component accepts the following props:
 
-|Name	|Type	|Description|
+|Name|Type|Description|
 |---|---|---|
-|value	|`T`	|A required value to check against.|
-|children	|`React.ReactNode`	|A required set of valid React nodes that should be rendered based on the value.|
+|value|`T`|A required value to check against.|
+|children|`React.ReactNode`|A required set of valid React nodes that should be rendered based on the value.|
 
 The `Switch.Case` and `Switch.Default` components are used to define individual cases within the Switch component. Both require childre, and `Switch.Case` accepts the following prop:
 
 
-|Name	|Type	|Description|
+|Name|Type|Description|
 |---|---|---|
-|when	|`T`	|A required value to check against for equality.|
+|when|`T`|A required value to check against for equality.|

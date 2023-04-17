@@ -111,4 +111,4 @@ While the end result looks very similar, `createContextStore` has the advantage 
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+Released under the [MIT](https://mit-license.org/) license.

@@ -1,13 +1,15 @@
 import { useState, useEffect } from 'react';
 
 /**
- * This hook allows you to detect when an element is in focus, such as an input field.
- * @param ref - The React ref of the element to track.
- * @returns A boolean indicating whether the element is currently in focus.
+ * Allows you to detect when an element is in focus, such as an input field.
+ * 
+ * @param {React.RefObject<HTMLElement>} ref The React ref of the element to track.
+ * 
+ * @returns {boolean} A boolean indicating whether the element is currently in focus.
  *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
-export const useFocus = (ref: React.RefObject<HTMLElement>): boolean => {
+function useFocus(ref: React.RefObject<HTMLElement>): boolean {
   const [isFocused, setIsFocused] = useState(false);
 
   useEffect(() => {
@@ -28,6 +30,6 @@ export const useFocus = (ref: React.RefObject<HTMLElement>): boolean => {
   }, [ref]);
 
   return isFocused;
-};
+}
 
 export default useFocus;

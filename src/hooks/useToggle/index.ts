@@ -1,14 +1,18 @@
 import { useState, useCallback } from 'react';
 
 /**
- * A React hook that provides a boolean toggle state, along with functions to toggle the state
- * and set the state to a specific value with type validation.
+ * Provides a boolean toggle state, along with functions to toggle the state and set the state to a specific value.
  *
- * @param initialValue The initial boolean value for the toggle state. Defaults to `false`.
- * @returns A tuple containing the current boolean value of the toggle state, a function to toggle
+ * @param {boolean} initialValue The initial boolean value for the toggle state. Defaults to `false`.
+ * 
+ * @returns {[
+ *    boolean,
+ *    () => void,
+ *    (newValue: boolean) => void
+ * ]} A tuple containing the current boolean value of the toggle state, a function to toggle
  * the state between `true` and `false`, and a function to set the state to a specific boolean value.
  *
- * For more information, go [here](https://github.com/givensuman/reactutilities).
+ * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
 function useToggle(initialValue = false) {
   const [value, setValue] = useState<boolean>(initialValue);

@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react';
 
 /**
- * A custom React hook that provides a way to store and retrieve data from the session storage.
- * @param key The key to use for storing and retrieving data from the session storage.
- * @param initialValue The initial value to use if no value is currently stored in session storage for the given key.
- * @returns A tuple containing the current value and a function to update the value in session storage.
+ * Provides a way to store and retrieve data from the session storage.
+ * 
+ * @template T The type of the value.
+ * 
+ * @param {string} key The key to use for storing and retrieving data from the session storage.
+ * @param {T} initialValue The initial value to use if no value is currently stored in session storage for the given key.
+ * 
+ * @returns {[T, (value: T) => void]} A tuple containing the current value and a function to update the value in session storage.
  *
- * For more information, go [here](https://github.com/givensuman/reactutilities).
+ * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
 function useSessionStorage<T>(
   key: string,

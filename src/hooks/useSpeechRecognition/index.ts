@@ -16,9 +16,9 @@ type SpeechRecognitionHook = {
 };
 
 /**
- * Adds speech recognition to your application.
+ * Uses the SpeechRecognition API to manage speech recognition.
  *
- * @returns An object with the following properties:
+ * @returns {SpeechRecognitionHook} An object with the following properties:
  *   - `isListening`: A boolean indicating whether the recognition is currently listening for speech input.
  *   - `transcript`: A string containing the recognized speech input.
  *   - `isError`: A boolean indicating whether an error occurred during the recognition process.

@@ -22,12 +22,13 @@ interface UseWebSocketOptions {
 /**
  * Simplifies the process of setting up and using web sockets for real-time communication.
  *
- * @param url The URL of the WebSocket server.
- * @param options Additional options to configure the WebSocket.
- * @returns An object containing the `send`, `lastMessage`, and `readyState` properties.
- * The `send` function can be used to send messages over the WebSocket connection.
- * The `lastMessage` property can be used to access the last message received over the WebSocket connection.
- * The `readyState` property can be used to check if the connection is currently open.
+ * @param {string} url The URL of the WebSocket server.
+ * @param {UseWebSocketOptions} options Additional options to configure the WebSocket.
+ * 
+ * @returns An object with the following properties:
+ *    - `send`: A function that can be used to send messages over the WebSocket connection.
+ *    - `lastMessage`: A property that can be used to access the last message received over the WebSocket connection.
+ *    - `readyState`: A property can be used to check if the connection is currently open.
  *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */

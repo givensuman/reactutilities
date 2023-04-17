@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react';
  * Throttles the execution of a function to a certain number of times within a given time period.
  *
  * @template T The type of value being throttled.
- * @param value The value to throttle.
- * @param limit The maximum number of times the function can be called within the given time period.
- * @param period The time period (in milliseconds) during which the maximum number of function calls is limited.
- * @returns The throttled value.
+ * 
+ * @param {T} value The value to throttle.
+ * @param {number} limit The maximum number of times the function can be called within the given time period.
+ * @param {number} period The time period (in milliseconds) during which the maximum number of function calls is limited.
+ * 
+ * @returns {T} The throttled value.
  *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */

@@ -1,17 +1,17 @@
-import { useEffect, RefObject } from 'react';
+import React, { useEffect } from 'react';
 
 type AnyEvent = MouseEvent | TouchEvent;
 
 /**
- * Allows you to detect when a user clicks outside of a specific element,
- * such as a dropdown menu or modal.
- * @param ref - A React ref pointing to the element that the click should be detected outside of.
- * @param handler - A function that will be called when a click is detected outside of the element.
+ * Allows you to detect when a user clicks outside of a specific element, such as a dropdown menu or modal.
+ * 
+ * @param {React.RefObject<T>} ref A React ref pointing to the element that the click should be detected outside of.
+ * @param {event: AnyEvent} handler A function that will be called when a click is detected outside of the element.
 
- * For more information, go [here](https://github.com/givensuman/reactutilities).
+ * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
 function useClickOutside<T extends HTMLElement = HTMLElement>(
-  ref: RefObject<T>,
+  ref: React.RefObject<T>,
   handler: (event: AnyEvent) => void,
 ): void {
   useEffect(() => {

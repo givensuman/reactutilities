@@ -3,7 +3,10 @@ import { useState, useEffect } from 'react';
 /**
  * Detects the size of the window and returns it as an object.
  *
- * @returns An object with the `width` and `height` of the window.
+ * @returns {{
+ *    width: number,
+ *    height: number
+ * }} An object with the `width` and `height` of the window.
  *
  * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */

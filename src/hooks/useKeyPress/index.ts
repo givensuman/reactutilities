@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 
 /**
- * A React hook that detects when a key is pressed and runs an optional callback.
+ * Detects when a key is pressed and runs an optional callback.
  *
- * @param targetKey The key to detect. Can be a string or a number.
- * @param onKeyPress Optional callback that runs when `targetKey` is pressed.
- * @returns A boolean indicating whether the target key was pressed.
+ * @param {string | number} targetKey The key to detect. Can be a string or a number.
+ * @param {(event?: KeyboardEvent) => void} onKeyPress Optional callback that runs when `targetKey` is pressed.
+ * 
+ * @returns {boolean} A boolean indicating whether the target key was pressed.
  *
- * For more information, go [here](https://github.com/givensuman/reactutilities).
+ * @see {@link https://github.com/givensuman/reactutilities} for more information.
  */
 const useKeyPress = (
   targetKey: string | number,

@@ -9,6 +9,14 @@ type MediaQueryObject = {
   maxHeight?: MediaQueryValue;
 };
 
+/**
+ * Returns a boolean value indicating whether the current viewport matches the given media query.
+ * 
+ * @param query The media query to match. Can be a string or an object containing `minWidth`, `maxWidth`, `minHeight`, and/or `maxHeight` properties.
+ * @returns `true` if the viewport matches the media query, `false` otherwise.
+ * 
+ * @see {@link https://github.com/givensuman/reactutilities} for more information.
+ */
 const useMediaQuery = (query: string | MediaQueryObject): boolean => {
   const [matches, setMatches] = useState(false);
 

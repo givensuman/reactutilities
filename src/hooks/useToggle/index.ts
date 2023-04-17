@@ -1,7 +1,5 @@
 import { useState, useCallback } from 'react';
 
-type UseToggleReturnType = [boolean, () => void, (value: boolean) => void];
-
 /**
  * A React hook that provides a boolean toggle state, along with functions to toggle the state
  * and set the state to a specific value with type validation.
@@ -12,7 +10,7 @@ type UseToggleReturnType = [boolean, () => void, (value: boolean) => void];
  *
  * For more information, go [here](https://github.com/givensuman/reactutilities).
  */
-function useToggle(initialValue = false): UseToggleReturnType {
+function useToggle(initialValue = false) {
   const [value, setValue] = useState<boolean>(initialValue);
 
   const toggleValue = useCallback(() => {
@@ -28,7 +26,7 @@ function useToggle(initialValue = false): UseToggleReturnType {
     setValue(newValue);
   }, []);
 
-  return [value, toggleValue, setValueWithValidation];
+  return [value, toggleValue, setValueWithValidation] as const;
 }
 
 export default useToggle;

@@ -1,31 +1,36 @@
-import { Interpolation, serializeStyles } from '@emotion/serialize';
+import j2c from 'j2c';
 
-/**
- * A template literal tag function for serializing CSS styles.
- *
- * @param {(TemplateStringsArray | Interpolation<unknown>)[]} args The template literal strings and interpolated values
- * 
- * @returns A serialized CSS string
- *
- * @example
- * ```
- * const color = 'blue';
- * const fontSize = '16px';
- * const style = css`
- *   color: ${color};
- *   font-size: ${fontSize};
- *   &:hover {
- *     color: red;
- *   }
- * `;
- * ```
- *
- * @see {@link https://github.com/givensuman/reactutilities} for more information.
- */
-function css(...args: (TemplateStringsArray | Interpolation<unknown>)[]) {
-  return serializeStyles(args)
-    .styles
-    .replace(/\s/g, '');
+type StyleObject = { [key: string]: string | number | StyleObject };
+type Interpolation = string | number | StyleObject;
+
+type TemplateStringsArrayArgs = TemplateStringsArray & {
+  raw: string[];
+};
+
+export function css(
+  strings: TemplateStringsArray | TemplateStringsArrayArgs,
+  ...interpolations: Interpolation[]
+): string {
+  let result = '';
+
+  // Convert the TemplateStringsArray into a plain string
+  for (let i = 0; i < strings.length; i++) {
+    result += strings[i];
+    if (i < interpolations.length) {
+      result += interpolations[i];
+    }
+  }
+
+  // Use j2c to convert the CSS string into a plain object
+  const styleObject = j2c(result);
+
+  // Convert the style object into a string of class names
+  let classNames = '';
+  for (const className in styleObject) {
+    if (styleObject.hasOwnProperty(className)) {
+      classNames += className + ' ';
+    }
+  }
+
+  return classNames.trim();
 }
-
-export default css;
